@@ -49,7 +49,7 @@ var map2 = [[9,9,9,9,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8],
             ];
 
 
-var map3 = [[9,1,1,1,1,1,1,9,9,9,9,9,9,9,9,9,9,9,9,9],
+var map3 = [ [9,1,1,1,1,1,1,9,9,9,9,9,9,9,9,9,9,9,9,9],
              [9,1,1,1,1,1,1,1,1,1,2,0,0,0,0,0,0,0,0,0],
              [9,1,1,1,1,1,1,1,1,1,2,0,0,0,0,0,0,0,0,0],
              [9,1,1,1,1,1,1,1,1,1,2,0,0,0,0,0,0,0,0,0],
@@ -131,7 +131,7 @@ function drawMap(){
             }
         }
     }
-    
+    loadNpcs();
 
 }
 
@@ -140,12 +140,12 @@ function changePlayerMap(direction){
         if(direction == "above" && player1.y == 0){
             player1.grid = 1;
             player1.y = 500;
-            return;
+            return true;
         }
         if(direction == "right" && player1.x == 950){
             player1.grid = 4;
             player1.x = -50;
-            return;
+            return true;
         }
     }//end of map 3 if statments
 
@@ -153,13 +153,13 @@ function changePlayerMap(direction){
         if(direction == "below" && player1.y == 450){
             player1.grid = 3;
             player1.y = -50;
-            console.log("calling this funciont");
-            return;
+           // console.log("calling this funciont");
+            return true;
         }
         if(direction == "right" && player1.x == 950){
             player1.grid = 2;
             player1.x = -50;
-            return;
+            return true;
         }
     }//end of map 1 if statmenets
 
@@ -167,7 +167,7 @@ function changePlayerMap(direction){
         if(direction == "left" && player1.x == 0){
             player1.grid = 1;
             player1.x = 1000;
-            return;
+            return true;
         }
     }// end of map2 if statements
 
@@ -175,14 +175,17 @@ function changePlayerMap(direction){
         if(direction == "left" && player1.x == 0){
             player1.grid = 3;
             player1.x = 1000;
-            return;
+            return true;
         }
         if(direction == "right" && player1.y == 450){
-            console.log("check error");
+            //console.log("check error");
             player1.y = 0;
-            return;
+            return true;
         }
     }
+
+    return false;
+    
 }
 
 

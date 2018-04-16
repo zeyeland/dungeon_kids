@@ -7,7 +7,7 @@ function wallCollision(direction){
 
     if(direction == "left"){
             if(theMap[ (player1.y / 50) ][ (player1.x / 50) - 1] == 9){
-                console.log("wall is left");
+                //console.log("wall is left");
                 return true;
             }   
         
@@ -16,7 +16,7 @@ function wallCollision(direction){
     if(direction == "above"){
     
             if(theMap[ (player1.y / 50) - 1][ (player1.x / 50) ] == 9){
-                console.log("wall is above");
+                //console.log("wall is above");
                 return true;
             }
         
@@ -25,7 +25,7 @@ function wallCollision(direction){
     if(direction == "right"){
         
             if(theMap[ (player1.y / 50) ][ (player1.x / 50) + 1] == 9){
-                console.log("wall is right");
+                //console.log("wall is right");
                 return true;
             }
     }
@@ -33,7 +33,7 @@ function wallCollision(direction){
     if(direction == "below"){
         
         if(theMap[ (player1.y / 50) + 1 ][ (player1.x / 50) ] == 9){
-            console.log("wall is below");
+            //console.log("wall is below");
             return true;
         }
     }

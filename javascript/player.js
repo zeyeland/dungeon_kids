@@ -1,10 +1,14 @@
 //playerComponnet
 function playerComponnet(){
-    this.health =100;
+    this.name = "player1"
+    this.health =50;
     this.x = 450; //starting position;
     this.spdX = 50; // player speed
     this.y = 250; // starting position
     this.spdY= 50;  // player speed
+
+    this.previousX =450;
+    this.previousY=250;
 
     this.lookLeft = true;
     this.lookRight = false;
@@ -24,7 +28,10 @@ function playerComponnet(){
                 changePlayerMap("left"); // this function is apart of map js, check the player position and changes map if needed
                 if (wallCollision("left") == false ){
                     parentThis.playerImage.src = "assets/player_Sprites/playerRun-Left.png";
+                    //updateAttackGrid(parentThis,parentThis.y/50,parentThis.x/50,"left");
+                    parentThis.previousX = parentThis.x
                     parentThis.x -= parentThis.spdX;
+                    
                  }
                 }
                 else{
@@ -34,8 +41,10 @@ function playerComponnet(){
                 }
                 break;
                 case 87: //case for above
-                changePlayerMap("above");
+                var trigger = changePlayerMap("above");
                 if (wallCollision("above") == false ){
+                    updateAttackGrid(parentThis,parentThis.y/50,parentThis.x/50,"above",trigger);
+                    parentThis.previousY = parentThis.y
                    parentThis.y -= parentThis.spdY;
                 }
                 
@@ -45,6 +54,8 @@ function playerComponnet(){
                 changePlayerMap("right");
                 if(wallCollision("right") == false ){
                     parentThis.playerImage.src = "assets/player_Sprites/playerRun-Right.png";
+                    //updateAttackGrid(parentThis,parentThis.y/50,parentThis.x/50,"right");
+                    parentThis.previousX = parentThis.x
                     parentThis.x += parentThis.spdX;
                 }
                 }
@@ -57,10 +68,13 @@ function playerComponnet(){
                 case 83: //case for below
                 changePlayerMap("below");
                 if(wallCollision("below") == false){
+                    //updateAttackGrid(parentThis,parentThis.y/50,parentThis.x/50,"below");
+                    parentThis.previousY = parentThis.y
                     parentThis.y += parentThis.spdY
                 }
                 break;
             }//end of switch
+            
         }   //end of document on keydown function 
         document.onkeyup = function(e){ //detects key up after movement
             switch (e.keyCode) {
@@ -82,6 +96,8 @@ function playerComponnet(){
                    break;
            }//end of key up switch
         }
+        
+        //console.log(player1.previousY + " " + player1.previousX);
         canvas.onmousedown = function(e){ 
             // have to calculate and process coordniates becasue character sprite 
             //is not centered in its origin
@@ -89,9 +105,13 @@ function playerComponnet(){
             var clickY = event.clientY;
                 if(clickY < parentThis.y && clickX > parentThis.x && clickX < parentThis.x + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png";
+                    
+                    
+                    playerAttack("UP",parentThis);
                 }
                 if(clickY > parentThis.y && clickX > parentThis.x && clickX < parentThis.x + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Down.png";
+                    playerAttack("DOWN",parentThis);
                 }
                 if(clickX < parentThis.x && clickY > parentThis.y && clickY < parentThis.y + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
