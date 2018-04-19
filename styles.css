@@ -1,0 +1,17 @@
+div {
+    width: 250px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid rgb(0, 0, 0);
+    float: left;
+} 
+
+img {
+
+    width: 100px;
+    height: 100px;
+} 
+
+canvas{
+    float: left;
+}

@@ -9,6 +9,7 @@ function playerComponnet(){
     this.playerImage.src = "assets/player_Sprites/playerChill-Right.png";
     //
     this.inventory = [];
+    this.questList = [];
     ///
     this.talk2NPC = false
     //

@@ -18,12 +18,15 @@ function socratesNPC(){
                 this.startedQuest = true;
                 if(parentThis.questCounter == 0){
                     console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
+                    console.log(player1.questList.length);
+                    console.log(player1.questList[0].name);
                 }
             }
             if(this.startedQuest == true && this.book.itemPickedUp == false){
                 //draw quest item
                 objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
-                player1.talk2NPC = false;
+                
             }
             if(this.book.itemPickedUp == true){
                 objectGrid[this.book.y/50][this.book.x/50] = 0;
@@ -58,7 +61,7 @@ function obamaNPC(){
         if(this.startedQuest == true && this.book.itemPickedUp == false){
             //draw quest item
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
-            player1.talk2NPC = false;
+            
         }
         if(this.book.itemPickedUp == true){
             objectGrid[this.book.y/50][this.book.x/50] = 0;
@@ -90,7 +93,7 @@ function trumpNPC(){
         if(this.startedQuest == true && this.book.itemPickedUp == false){
             //draw quest item
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
-            player1.talk2NPC = false;
+           
         }
         if(this.book.itemPickedUp == true){
             objectGrid[this.book.y/50][this.book.x/50] = 0;
@@ -122,7 +125,7 @@ function songsNPC(){
         if(this.startedQuest == true && this.book.itemPickedUp == false){
             //draw quest item
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
-            player1.talk2NPC = false;
+            
         }
         if(this.book.itemPickedUp == true){
             objectGrid[this.book.y/50][this.book.x/50] = 0;
