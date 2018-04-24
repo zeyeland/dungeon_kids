@@ -2,12 +2,18 @@ var socrates = new socratesNPC();
 var obama = new obamaNPC();
 var trump = new trumpNPC();
 var songs = new songsNPC();
+var oprah = new oprahNPC();
+var prince = new princeNPC();
+var hueyNewton = new hueyNewtonNPC();
 
 var gadflyNPCList = [];
 gadflyNPCList.push(socrates);
 gadflyNPCList.push(obama);
 gadflyNPCList.push(trump);
 gadflyNPCList.push(songs);
+gadflyNPCList.push(oprah);
+gadflyNPCList.push(prince);
+gadflyNPCList.push(hueyNewton);
 
 function socratesNPC(){
     this.name = "Socrates"
@@ -66,7 +72,7 @@ function obamaNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(obama) == true && player1.inventory.includes(socratesScroll) ){
+        if(player1.talk2NPC == true && playerInScope(obama) == true /*&& player1.inventory.includes(socratesScroll)*/ ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -101,7 +107,7 @@ function trumpNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(trump) == true && player1.inventory.includes(socratesScroll) ){
+        if(player1.talk2NPC == true && playerInScope(trump)  ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -152,6 +158,112 @@ function songsNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = 0;
         }
     }
+}
+
+function oprahNPC(){
+    this.name = "Oprah"
+    this.y = 900;
+    this.x = 200;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/oprah.png";
+    this.speak = ["you get a book, you get a book, everyone gets books"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = oprahBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScope(oprah) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }  
+}
+
+function princeNPC(){
+    this.name = "Prince"
+    this.y = 900;
+    this.x = 150;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/prince.png";
+    this.speak = ["HEHEEEEEEE im prince baby. ITS TIME!!!"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = princeBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScope(prince) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }  
+}
+
+function hueyNewtonNPC(){
+    this.name = "Huey Newton"
+    this.y = 900;
+    this.x = 100;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/hueyNewton.png";
+    this.speak = ["i was a political activist"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = hueyNewtonBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScope(hueyNewton) == true ){
+            console.log("hellow to the test of heuy newtonw");
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }  
 }
 
 function drawNPC(focusObject,whiteSpaceX,whiteSpaceY){

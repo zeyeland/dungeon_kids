@@ -7,7 +7,7 @@ function checkMapTileCollisions(direction){
   var checkGoblin = checkGoblinCollisions(direction);
   var checkGadfly = checkGadflyCollisions(direction);
 
-  if(checkLava == true || checkWall == true || checkGoblin == true || checkGadfly == true){
+  if(checkWall == true || checkLava == true || checkGoblin == true || checkGadfly == true ){
     return true
   }
   else return false;

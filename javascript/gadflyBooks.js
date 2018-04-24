@@ -6,11 +6,20 @@ var trumpBook = new bookObj("Book of Donald","Trump",50,250,"assets/questItems/g
 
 var songsBook = new bookObj("Book of Songs","Songs",50,200,"assets/questItems/magenta_old.png");
 
+var oprahBook = new bookObj("Book of Oprah","Oprah",100,350,"assets/questItems/light_blue_old.png");
+
+var princeBook = new bookObj("Book of Prince","Prince",100,300,"assets/questItems/glittering.png");
+
+var hueyNewtonBook = new bookObj("Book of Huey Newton","Huey Newton",100,250,"assets/questItems/plaid_old.png");
+
 var bookList = [];
 bookList.push(socratesScroll);
 bookList.push(obamaBook);
 bookList.push(trumpBook);
 bookList.push(songsBook);
+bookList.push(oprahBook);
+bookList.push(princeBook);
+bookList.push(hueyNewtonBook);
 
 function bookObj(bookName, bookOwner, booky, bookx, bookSrc){
     this.name = bookName
@@ -49,6 +58,15 @@ function getBookOwner(ownerOfBook){
     }
     if(ownerOfBook == "Songs"){
         return songs;
+    }
+    if(ownerOfBook == "Oprah"){
+        return oprah;
+    }
+    if(ownerOfBook == "Prince"){
+        return prince;
+    }
+    if(ownerOfBook == "Huey Newton"){
+        return hueyNewton;
     }
 }
 

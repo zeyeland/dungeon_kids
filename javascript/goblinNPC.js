@@ -9,7 +9,7 @@ function goblinComponnet(){
     this.y = 50; // starting position
     this.spdY= 50;  // player speed
     this.goblinImage = new Image(); //player img with src
-    this.goblinImage.src = "assets/gadfly_sprites/prince.png";
+    this.goblinImage.src = "assets/gadfly_sprites/trump.png";
 
     //objects get put into grid on creation
     objectGrid[this.y/50][this.x/50] = this;

@@ -19,6 +19,9 @@ function update(){
     obama.update();
     trump.update();
     songs.update();
+    oprah.update();
+    prince.update();
+    hueyNewton.update();
     goblin1.update();
     playerStatusBoxUpdate();
  }
