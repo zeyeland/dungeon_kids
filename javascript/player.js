@@ -18,7 +18,6 @@ function playerComponnet(){
     this.lookRight = false;
 
     this.update = function(){
-        //console.log( player1.inventory);
         var parentThis = this;
         checkHealth();
         document.onkeydown = function(e) { //detects movement with keys strokes
@@ -29,7 +28,6 @@ function playerComponnet(){
                         parentThis.playerImage.src = "assets/player_Sprites/playerRun-Left.png";
                         parentThis.x -= parentThis.spdX;
                         //console.log("player left");
-                        
                     }
                 }
                 else{
@@ -42,7 +40,6 @@ function playerComponnet(){
                 if(checkMapTileCollisions("above") == false){
                     parentThis.y -= parentThis.spdY;
                     //console.log("player up");
-                    
                 }
                     break;
                 case 68:
@@ -95,6 +92,36 @@ function playerComponnet(){
                 break;
             }//end of key up switch
         }//end of keyup function
+        canvas.onmousedown = function(e){ 
+            // have to calculate and process coordniates becasue character sprite 
+            //is not centered in its origin
+            var clickX = event.clientX;
+            var clickY = event.clientY;
+                if(clickY < canvas.height/2 && clickX > canvas.width/2 && clickX < canvas.width/2 + 50 ){
+                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png"; 
+                    playerAttack("UP",parentThis);
+                    console.log("attack up");
+                }
+                if(clickY > canvas.height/2 && clickX > canvas.width/2 && clickX < canvas.width/2 + 50 ){
+                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Down.png";
+                    playerAttack("DOWN",parentThis);
+                    console.log("attack down");
+                }
+                if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
+                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
+                    //console.log("attack left");
+                }
+                if(clickX > canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
+                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Right.png";
+                    //console.log("attack right");
+                }
+        }//end of moue click down
+
+        
+        canvas.onmouseup = function(e){ //change image back to normal on mouse click up
+            parentThis.playerImage.src = "assets/player_Sprites/playerChill-Left.png";
+            
+        }
     ////////////////////////end of movement functions      
         drawPlayer();
     }//end of update function
@@ -115,3 +142,20 @@ function checkHealth(){
         player1.health = 100;
     }
 }
+
+function playerAttack(direction,objectFocus){
+    if(direction == "UP"){
+        if(objectGrid[objectFocus.y/50-1][objectFocus.x/50] == goblin1 ){
+            objectGrid[objectFocus.y/50-1][objectFocus.x/50].health = objectGrid[objectFocus.y/50-1][objectFocus.x/50].health - 25;
+            console.log("hit UP was a success");
+            console.log(objectGrid[objectFocus.y/50-1][objectFocus.x/50].health);
+        }
+    }
+    if(direction == "DOWN"){
+        if(objectGrid[objectFocus.y/50+1][objectFocus.x/50] == goblin1 ){
+            objectGrid[objectFocus.y/50+1][objectFocus.x/50].health = objectGrid[objectFocus.y/50+1][objectFocus.x/50].health - 25;
+            console.log("hit DOWN was a success");
+            console.log(objectGrid[objectFocus.y/50+1][objectFocus.x/50].health);
+        }
+    }  
+ }

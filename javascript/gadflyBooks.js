@@ -6,6 +6,12 @@ var trumpBook = new bookObj("Book of Donald","Trump",50,250,"assets/questItems/g
 
 var songsBook = new bookObj("Book of Songs","Songs",50,200,"assets/questItems/magenta_old.png");
 
+var bookList = [];
+bookList.push(socratesScroll);
+bookList.push(obamaBook);
+bookList.push(trumpBook);
+bookList.push(songsBook);
+
 function bookObj(bookName, bookOwner, booky, bookx, bookSrc){
     this.name = bookName
     this.y = booky;
@@ -45,3 +51,4 @@ function getBookOwner(ownerOfBook){
         return songs;
     }
 }
+

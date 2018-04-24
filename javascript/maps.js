@@ -49,15 +49,6 @@ var mapGrid = [[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,
                [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]]
 
 
-
-function calculateMapPosition(){
-  if(player.x < 500){
-    //draw the cage area
-  }
-}
-
-
-
 function drawMapTiles(){
   var playerX = player1.x  / 50;
   var playerY = player1.y / 50;
@@ -67,14 +58,15 @@ function drawMapTiles(){
 
   var startArraySearchY = playerY - 5;
   var endArraySearchY = playerY + 4;
+
+  ////if statement to garuntee Y is not out of bounds
   if(endArraySearchY > 19){
     endArraySearchY = 19;
   }
 
   var whiteSpaceY=0;
   var whiteSpaceX=0;
-  //console.log('StartingPosition should be ' + startArraySearchX + " " + startArraySearchY);
-  //console.log('StartingPosition should be ' + endArraySearchX + " " + endArraySearchY);
+
   for(var rowCount = startArraySearchY; rowCount <= endArraySearchY; rowCount++){
     if(rowCount>= 0){
         whiteSpaceX = 0;

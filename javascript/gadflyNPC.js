@@ -1,3 +1,14 @@
+var socrates = new socratesNPC();
+var obama = new obamaNPC();
+var trump = new trumpNPC();
+var songs = new songsNPC();
+
+var gadflyNPCList = [];
+gadflyNPCList.push(socrates);
+gadflyNPCList.push(obama);
+gadflyNPCList.push(trump);
+gadflyNPCList.push(songs);
+
 function socratesNPC(){
     this.name = "Socrates"
     this.y = 900;
@@ -10,6 +21,8 @@ function socratesNPC(){
     this.book = socratesScroll;
     this.itemPickedUp = false;
     this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
     
     this.update = function(){
         var parentThis = this;
@@ -19,9 +32,8 @@ function socratesNPC(){
                 if(parentThis.questCounter == 0){
                     console.log(parentThis.speak[0]);
                     player1.questList.push(parentThis);
-                    console.log(player1.questList.length);
-                    console.log(player1.questList[0].name);
                 }
+
             }
             if(this.startedQuest == true && this.book.itemPickedUp == false){
                 //draw quest item
@@ -50,12 +62,15 @@ function obamaNPC(){
     this.itemPickedUp = false;
     this.questCounter = 0;
 
+    objectGrid[this.y/50][this.x/50] = this;
+
     this.update = function(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScope(obama) == true && player1.inventory.includes(socratesScroll) ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
+                player1.questList.push(parentThis);
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -82,12 +97,15 @@ function trumpNPC(){
     this.itemPickedUp = false;
     this.questCounter = 0;
 
+    objectGrid[this.y/50][this.x/50] = this;
+
     this.update = function(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScope(trump) == true && player1.inventory.includes(socratesScroll) ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -114,12 +132,15 @@ function songsNPC(){
     this.itemPickedUp = false;
     this.questCounter = 0;
 
+    objectGrid[this.y/50][this.x/50] = this;
+
     this.update = function(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScope(songs) == true ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
