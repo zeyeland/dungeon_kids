@@ -32,7 +32,7 @@ function socratesNPC(){
     
     this.update = function(){
         var parentThis = this;
-            if(player1.talk2NPC == true && playerInScope(socrates) == true ){
+            if(player1.talk2NPC == true && playerInScopeOfGadfly(socrates) == true ){
                 player1.talk2NPC = false;
                 this.startedQuest = true;
                 if(parentThis.questCounter == 0){
@@ -72,7 +72,7 @@ function obamaNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(obama) == true /*&& player1.inventory.includes(socratesScroll)*/ ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(obama) == true /*&& player1.inventory.includes(socratesScroll)*/ ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -107,7 +107,7 @@ function trumpNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(trump)  ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(trump)  ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -142,7 +142,7 @@ function songsNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(songs) == true ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(songs) == true ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -177,7 +177,7 @@ function oprahNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(oprah) == true ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(oprah) == true ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -212,7 +212,7 @@ function princeNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(prince) == true ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(prince) == true ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -247,7 +247,7 @@ function hueyNewtonNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScope(hueyNewton) == true ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(hueyNewton) == true ){
             console.log("hellow to the test of heuy newtonw");
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
@@ -270,7 +270,7 @@ function drawNPC(focusObject,whiteSpaceX,whiteSpaceY){
     ctx.drawImage(focusObject.npcImage,whiteSpaceX*50,whiteSpaceY*50,50,50);
 }
 
-function playerInScope(NpcObject){
+function playerInScopeOfGadfly(NpcObject){
    if(NpcObject.x == player1.x && ( NpcObject.y-50 == player1.y   ||  NpcObject.y+50 == player1.y  )  ){
        //console.log("player is in scoop");
        return true;

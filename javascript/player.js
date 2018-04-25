@@ -22,6 +22,11 @@ function playerComponnet(){
         checkHealth();
         document.onkeydown = function(e) { //detects movement with keys strokes
             switch (e.keyCode) {
+                case 77: //debuging key
+                console.log(objectGrid[350/50][550/50]);
+                console.log(objectGrid[350/50][500/50]);
+                   
+                break;
                 case 65:
                 if(parentThis.lookLeft == true){
                     if(checkMapTileCollisions("left") == false){
@@ -109,15 +114,15 @@ function playerComponnet(){
                 }
                 if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
+                    playerAttack("LEFT",parentThis);
                     //console.log("attack left");
                 }
                 if(clickX > canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Right.png";
+                    playerAttack("RIGHT",parentThis);
                     //console.log("attack right");
                 }
         }//end of moue click down
-
-        
         canvas.onmouseup = function(e){ //change image back to normal on mouse click up
             parentThis.playerImage.src = "assets/player_Sprites/playerChill-Left.png";
             
@@ -148,14 +153,24 @@ function playerAttack(direction,objectFocus){
         if(objectGrid[objectFocus.y/50-1][objectFocus.x/50] == goblin1 ){
             objectGrid[objectFocus.y/50-1][objectFocus.x/50].health = objectGrid[objectFocus.y/50-1][objectFocus.x/50].health - 25;
             console.log("hit UP was a success");
-            console.log(objectGrid[objectFocus.y/50-1][objectFocus.x/50].health);
         }
     }
     if(direction == "DOWN"){
         if(objectGrid[objectFocus.y/50+1][objectFocus.x/50] == goblin1 ){
             objectGrid[objectFocus.y/50+1][objectFocus.x/50].health = objectGrid[objectFocus.y/50+1][objectFocus.x/50].health - 25;
             console.log("hit DOWN was a success");
-            console.log(objectGrid[objectFocus.y/50+1][objectFocus.x/50].health);
         }
-    }  
+    }
+    if(direction == "LEFT"){
+        if(objectGrid[objectFocus.y/50][objectFocus.x/50-1] == goblin1 ){
+            objectGrid[objectFocus.y/50][objectFocus.x/50-1].health = objectGrid[objectFocus.y/50][objectFocus.x/50-1].health - 25;
+            console.log("hit LEFT was a success");
+        }
+    } 
+    if(direction == "RIGHT"){
+        if(objectGrid[objectFocus.y/50][objectFocus.x/50+1] == goblin1 ){
+            objectGrid[objectFocus.y/50][objectFocus.x/50+1].health = objectGrid[objectFocus.y/50][objectFocus.x/50+1].health - 25;
+            console.log("hit RIGHT was a success");
+        }
+    }   
  }

@@ -13,16 +13,16 @@ var player1 = new playerComponnet()
 function update(){
     ctx.clearRect(0,0, 2000, 5000); // clears new area after translate is complete
     drawMapTiles();
-    drawObjectTiles();
+    drawObjectTiles(); // this methods draws objects and calls updated methods
     player1.update(); // -- update function draws player - drawPlayer();
-    socrates.update();
+    /*socrates.update();
     obama.update();
     trump.update();
     songs.update();
     oprah.update();
     prince.update();
-    hueyNewton.update();
-    goblin1.update();
+    hueyNewton.update();*/
+    //goblin1.update();
     playerStatusBoxUpdate();
  }
 

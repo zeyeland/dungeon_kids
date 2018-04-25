@@ -45,11 +45,15 @@ function drawObjectTiles(){
         if(columnCount>=0){
           if(gadflyNPCList.includes(objectGrid[rowCount][columnCount])) // drawing active gadflys
           { 
+            objectGrid[rowCount][columnCount].update();
             drawNPC(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
           }
-          if(goblinNPCList.includes(objectGrid[rowCount][columnCount])) // drawwing all goblins active
+          if(goblinNPCList.includes(objectGrid[rowCount][columnCount]) ) // drawwing all goblins active
           { 
-            drawGoblin(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+            objectGrid[rowCount][columnCount].update();
+            if(objectGrid[rowCount][columnCount].health > 0){
+              drawGoblin(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+            }  
           } 
           // if statement checks object grid for every instance of a book
           if( bookList.includes(objectGrid[rowCount][columnCount]) && objectGrid[rowCount][columnCount].itemPickedUp == false){

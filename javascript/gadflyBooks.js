@@ -41,7 +41,7 @@ function bookObj(bookName, bookOwner, booky, bookx, bookSrc){
     }
 
 }
-
+////f
 function drawBook(objectFocus,whitespaceX,whitespaceY){
     ctx.drawImage(objectFocus.bookImage,whitespaceX*50,whitespaceY*50,50,50);
 }
