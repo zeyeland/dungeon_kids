@@ -1,6 +1,6 @@
 //playerComponnet
 function playerComponnet(){
-    this.health;
+    this.health =100;
     this.x = 450; //starting position;
     this.spdX = 50; // player speed
     this.y = 750; // starting position
@@ -29,7 +29,7 @@ function playerComponnet(){
                 break;
                 case 65:
                 if(parentThis.lookLeft == true){
-                    if(checkMapTileCollisions("left") == false){
+                    if(checkMapTileCollisions("LEFT",parentThis) == false){
                         parentThis.playerImage.src = "assets/player_Sprites/playerRun-Left.png";
                         parentThis.x -= parentThis.spdX;
                         //console.log("player left");
@@ -42,14 +42,14 @@ function playerComponnet(){
                 }
                     break;
                 case 87:
-                if(checkMapTileCollisions("above") == false){
+                if(checkMapTileCollisions("ABOVE",parentThis) == false){
                     parentThis.y -= parentThis.spdY;
                     //console.log("player up");
                 }
                     break;
                 case 68:
                 if(parentThis.lookRight == true){
-                    if(checkMapTileCollisions("right") == false){
+                    if(checkMapTileCollisions("RIGHT",parentThis) == false){
                         parentThis.playerImage.src = "assets/player_Sprites/playerRun-Right.png";
                         parentThis.x += parentThis.spdX;
                         //console.log("player right");
@@ -63,7 +63,7 @@ function playerComponnet(){
                 }
                     break;
                 case 83:
-                if(checkMapTileCollisions("below") == false){
+                if(checkMapTileCollisions("BELOW",parentThis) == false){
                     parentThis.y += parentThis.spdY;
                     //console.log("player down");
                     
@@ -148,27 +148,31 @@ function checkHealth(){
     }
 }
 
+function movePlayer(){
+    
+}
+
 function playerAttack(direction,objectFocus){
     if(direction == "UP"){
-        if(objectGrid[objectFocus.y/50-1][objectFocus.x/50] == goblin1 ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50-1][objectFocus.x/50]) ){
             objectGrid[objectFocus.y/50-1][objectFocus.x/50].health = objectGrid[objectFocus.y/50-1][objectFocus.x/50].health - 25;
             console.log("hit UP was a success");
         }
     }
     if(direction == "DOWN"){
-        if(objectGrid[objectFocus.y/50+1][objectFocus.x/50] == goblin1 ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50+1][objectFocus.x/50]) ){
             objectGrid[objectFocus.y/50+1][objectFocus.x/50].health = objectGrid[objectFocus.y/50+1][objectFocus.x/50].health - 25;
             console.log("hit DOWN was a success");
         }
     }
     if(direction == "LEFT"){
-        if(objectGrid[objectFocus.y/50][objectFocus.x/50-1] == goblin1 ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50 - 1]) ){
             objectGrid[objectFocus.y/50][objectFocus.x/50-1].health = objectGrid[objectFocus.y/50][objectFocus.x/50-1].health - 25;
             console.log("hit LEFT was a success");
         }
     } 
     if(direction == "RIGHT"){
-        if(objectGrid[objectFocus.y/50][objectFocus.x/50+1] == goblin1 ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50 + 1]) ){
             objectGrid[objectFocus.y/50][objectFocus.x/50+1].health = objectGrid[objectFocus.y/50][objectFocus.x/50+1].health - 25;
             console.log("hit RIGHT was a success");
         }
