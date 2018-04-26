@@ -15,7 +15,9 @@ function checkMapTileCollisions(direction, focusObject){
 }
 
 function checkLavaCollisions(direction,focusObject){
-
+  
+  
+  
   if(direction == "ABOVE" && mapGrid[focusObject.y/50-1][focusObject.x/50] == 8){
     focusObject.health = 0;
     return true;
@@ -25,6 +27,7 @@ function checkLavaCollisions(direction,focusObject){
     return true;
   }
   if(direction == "LEFT" && mapGrid[focusObject.y/50][focusObject.x/50-1] == 8){
+
     focusObject.health = 0;
     return true;
   }
@@ -36,7 +39,6 @@ function checkLavaCollisions(direction,focusObject){
 }
 
 function checkWallCollisions(direction,focusObject){
- 
   if(direction == "ABOVE" && mapGrid[focusObject.y/50-1][focusObject.x/50] == 9){
     return true;
   }

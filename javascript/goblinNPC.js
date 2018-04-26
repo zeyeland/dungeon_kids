@@ -1,8 +1,12 @@
-var goblin1 = new smallGoblinComponnet("Goblin1",50,300,"assets/enemy_sprites/hobgoblin_old.png");
-var goblin2 = new smallGoblinComponnet("Goblin2",650,550,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin1 = new smallGoblinComponnet("Goblin1",200,200,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin2 = new smallGoblinComponnet("Goblin2",250,200,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin3 = new smallGoblinComponnet("Goblin2",300,200,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin4 = new smallGoblinComponnet("Goblin2",350,200,"assets/enemy_sprites/hobgoblin_new.png");
 var goblinNPCList = [];
 goblinNPCList.push(goblin1);
 goblinNPCList.push(goblin2);
+goblinNPCList.push(goblin3);
+goblinNPCList.push(goblin4);
 
 function smallGoblinComponnet(name,x,y,imageSRC,){
     this.health = 100;
@@ -79,7 +83,7 @@ function playerInScopeOfGoblin(goblinObject){
 }
 
 function moveGoblin(goblinObject, direction){
-    if(checkWallCollisions(direction,goblinObject) == false){
+    if(checkMapTileCollisions(direction,goblinObject) == false){
         switch(direction) {
             case "RIGHT":
                 objectGrid[goblinObject.y / 50][goblinObject.x / 50] = 0;
@@ -113,37 +117,46 @@ function moveGoblin(goblinObject, direction){
 }
 
 function moveGoblinReverse(goblinObject){
+    
     switch(goblinObject.movementHistory.pop( )) {
         case "RIGHT":
+        if(checkMapTileCollisions("LEFT",goblinObject) == false){
             objectGrid[goblinObject.y / 50][goblinObject.x / 50] = 0;
             objectGrid[goblinObject.y / 50][goblinObject.x / 50 - 1] = goblinObject;
             goblinObject.x -= 50;
+        }
             //goblinObject.movementHistory.pop()
             break;
         case"LEFT":
+        if(checkMapTileCollisions("RIGHT",goblinObject) == false){
             objectGrid[goblinObject.y / 50][goblinObject.x / 50] = 0;
             objectGrid[goblinObject.y / 50][goblinObject.x / 50 + 1] = goblinObject;
             goblinObject.x += 50;
+        }
             //goblinObject.movementHistory.pop()
             break;
         case"ABOVE":
+        if(checkMapTileCollisions("BELOW",goblinObject) == false){
             objectGrid[goblinObject.y / 50][goblinObject.x / 50] = 0;
             objectGrid[goblinObject.y / 50 + 1][goblinObject.x / 50] = goblinObject;
             goblinObject.y += 50;
+        }
             //goblinObject.movementHistory.pop()
             break;
         case"BELOW":
+        if(checkMapTileCollisions("ABOVE",goblinObject) == false){
             objectGrid[goblinObject.y / 50][goblinObject.x / 50] = 0;
             objectGrid[goblinObject.y / 50 - 1][goblinObject.x / 50] = goblinObject;
             goblinObject.y -= 50;
+        }
             //goblinObject.movementHistory.pop()
             break;
-    }        
+    }
+        
 }
 
 function goblinTouch(direction, goblinObject){ //this function moves the player back when touched
-    if(checkWallCollisions(direction, player1) == false ){
-        //console.log(direction);
+    if(checkMapTileCollisions(direction, player1) == false ){
         switch(direction) {
             case "RIGHT":
                 player1.x += 50;
@@ -159,7 +172,7 @@ function goblinTouch(direction, goblinObject){ //this function moves the player 
                 break; 
             }//end of switch       
     }//else if goblin touches but player has wall colleisions
-    else if(checkWallCollisions(direction, player1) == true ){
+    else if(checkMapTileCollisions(direction, player1) == true  ){
         switch(direction) {
             case "RIGHT":
                 moveGoblin(goblinObject, "LEFT");
@@ -174,7 +187,7 @@ function goblinTouch(direction, goblinObject){ //this function moves the player 
                 moveGoblin(goblinObject, "ABOVE");
                 break; 
             }//end of switch 
-    } //console.log(goblinObject); //player1.health -= 25; 
+    } player1.health -= 5; //console.log(player1.health);
 
 }
 

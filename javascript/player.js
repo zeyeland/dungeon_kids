@@ -105,12 +105,12 @@ function playerComponnet(){
                 if(clickY < canvas.height/2 && clickX > canvas.width/2 && clickX < canvas.width/2 + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png"; 
                     playerAttack("UP",parentThis);
-                    console.log("attack up");
+                    //console.log("attack up");
                 }
                 if(clickY > canvas.height/2 && clickX > canvas.width/2 && clickX < canvas.width/2 + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Down.png";
                     playerAttack("DOWN",parentThis);
-                    console.log("attack down");
+                    //console.log("attack down");
                 }
                 if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
