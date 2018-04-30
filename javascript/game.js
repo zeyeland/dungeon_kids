@@ -6,6 +6,8 @@ var missionMessage = document.getElementById('missionMessage');
 var nameGadfly = document.getElementById('nameGadfly');
 var imageGadfly = document.getElementById('imageGadfly');
 
+var playerHealth = document.getElementById('playerHealth');
+
 var player1 = new playerComponnet()
 
 //drawMapTiles();
@@ -24,6 +26,7 @@ function update(){
     hueyNewton.update();*/
     //goblin1.update();
     playerStatusBoxUpdate();
+    playerActionBoxUpdate();
  }
 
 setInterval(update,40);
@@ -35,6 +38,10 @@ function playerStatusBoxUpdate(){
         imageGadfly.src = player1.questList[ player1.questList.length -1].npcImage.src;
     }
     
+}
+
+function playerActionBoxUpdate(){
+    //playerHealth.innerHTML = "Health :" + player1.health;
 }
 
 

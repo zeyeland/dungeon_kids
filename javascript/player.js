@@ -1,9 +1,9 @@
 //playerComponnet
 function playerComponnet(){
-    this.health =100;
-    this.x = 450; //starting position;
+    this.health =200;
+    this.x = 3500; //starting position;
     this.spdX = 50; // player speed
-    this.y = 750; // starting position
+    this.y = 1000; // starting position
     this.spdY= 50;  // player speed
     this.playerImage = new Image(); //player img with src
     this.playerImage.src = "assets/player_Sprites/playerChill-Right.png";
@@ -11,7 +11,8 @@ function playerComponnet(){
     this.inventory = [];
     this.questList = [];
     ///
-    this.talk2NPC = false
+    this.talk2NPC = false;
+    this.attackDrawing = false;
     //
     /*player looking directions for sprites*/
     this.lookLeft = true;
@@ -102,29 +103,34 @@ function playerComponnet(){
             //is not centered in its origin
             var clickX = event.clientX;
             var clickY = event.clientY;
-                if(clickY < canvas.height/2 && clickX > canvas.width/2 && clickX < canvas.width/2 + 50 ){
+            console.log(clickX + " vs " + canvas.width/2);
+            console.log(clickY + " vs " + canvas.height/2);
+                if(clickY < canvas.height/2 +15 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png"; 
                     playerAttack("UP",parentThis);
-                    //console.log("attack up");
+                    console.log("attack up");
                 }
-                if(clickY > canvas.height/2 && clickX > canvas.width/2 && clickX < canvas.width/2 + 50 ){
+                if(clickY > canvas.height/2 + 70 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Down.png";
                     playerAttack("DOWN",parentThis);
-                    //console.log("attack down");
+                    console.log("attack down");
                 }
-                if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
-                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
+                 if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 75 ){
+                   parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
                     playerAttack("LEFT",parentThis);
+                    parentThis.attackDrawing = "left";
                     //console.log("attack left");
                 }
-                if(clickX > canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 50 ){
+                if(clickX > canvas.width/2 + 50 && clickY > canvas.height/2 + 15 && clickY < canvas.height/2 + 75 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Right.png";
                     playerAttack("RIGHT",parentThis);
+                    parentThis.attackDrawing = "right";
                     //console.log("attack right");
                 }
         }//end of moue click down
         canvas.onmouseup = function(e){ //change image back to normal on mouse click up
             parentThis.playerImage.src = "assets/player_Sprites/playerChill-Left.png";
+            parentThis.attackDrawing = false;
             
         }
     ////////////////////////end of movement functions      
@@ -137,7 +143,18 @@ function playerComponnet(){
 } // end of playerComponnet
 
 function drawPlayer(){
-    ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,50,50);
+
+    if(player1.attackDrawing == "right"){
+        ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,100,50);
+    }
+    if(player1.attackDrawing == "left"){
+        ctx.drawImage(player1.playerImage,canvas.width/2-50,canvas.height/2,100,50);
+    }
+    if(player1.attackDrawing == false){
+        ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,50,50);
+    }
+
+    
 }
 
 function checkHealth(){

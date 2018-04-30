@@ -1,12 +1,56 @@
-var goblin1 = new smallGoblinComponnet("Goblin1",200,200,"assets/enemy_sprites/hobgoblin_old.png");
-var goblin2 = new smallGoblinComponnet("Goblin2",250,200,"assets/enemy_sprites/hobgoblin_new.png");
-var goblin3 = new smallGoblinComponnet("Goblin2",300,200,"assets/enemy_sprites/hobgoblin_new.png");
-var goblin4 = new smallGoblinComponnet("Goblin2",350,200,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin1 = new smallGoblinComponnet("Goblin1",900,50,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin2 = new smallGoblinComponnet("Goblin2",1100,150,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin3 = new smallGoblinComponnet("Goblin3",900,450,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin4 = new smallGoblinComponnet("Goblin4",1000,450,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin6 = new smallGoblinComponnet("Goblin6",1500,200,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin7 = new smallGoblinComponnet("Goblin7",1300,250,"assets/enemy_sprites/hobgoblin_new.png");
+
+var goblin5 = new smallGoblinComponnet("Goblin5",1800,200,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin8 = new smallGoblinComponnet("Goblin8",2000,150,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin9 = new smallGoblinComponnet("Goblin9",1800,100,"assets/enemy_sprites/hobgoblin_old.png");
+
+
+var goblin10 = new smallGoblinComponnet("Goblin10",2600,50,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin11 = new smallGoblinComponnet("Goblin11",2200,500,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin12 = new smallGoblinComponnet("Goblin12",3800,100,"assets/enemy_sprites/hobgoblin_old.png");
+
+var goblin13 = new smallGoblinComponnet("Goblin13",3300,600,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin14 = new smallGoblinComponnet("Goblin14",3300,750,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin15 = new smallGoblinComponnet("Goblin15",3300,900,"assets/enemy_sprites/hobgoblin_old.png");
+
+var goblin16 = new smallGoblinComponnet("Goblin16",3600,900,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin17 = new smallGoblinComponnet("Goblin17",3600,750,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin18 = new smallGoblinComponnet("Goblin18",3600,600,"assets/enemy_sprites/hobgoblin_new.png");
+
+var goblin19 = new smallGoblinComponnet("Goblin19",3900,900,"assets/enemy_sprites/hobgoblin_old.png");
+var goblin20 = new smallGoblinComponnet("Goblin20",3900,750,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin21 = new smallGoblinComponnet("Goblin21",3900,600,"assets/enemy_sprites/hobgoblin_new.png");
+
+
+
 var goblinNPCList = [];
 goblinNPCList.push(goblin1);
 goblinNPCList.push(goblin2);
 goblinNPCList.push(goblin3);
 goblinNPCList.push(goblin4);
+goblinNPCList.push(goblin5);
+goblinNPCList.push(goblin6);
+goblinNPCList.push(goblin7);
+goblinNPCList.push(goblin8);
+goblinNPCList.push(goblin9);
+goblinNPCList.push(goblin10);
+goblinNPCList.push(goblin11);
+goblinNPCList.push(goblin12);
+goblinNPCList.push(goblin13);
+goblinNPCList.push(goblin14);
+goblinNPCList.push(goblin15);
+goblinNPCList.push(goblin16);
+goblinNPCList.push(goblin17);
+goblinNPCList.push(goblin18);
+goblinNPCList.push(goblin19);
+goblinNPCList.push(goblin20);
+goblinNPCList.push(goblin21);
+
 
 function smallGoblinComponnet(name,x,y,imageSRC,){
     this.health = 100;
@@ -187,7 +231,7 @@ function goblinTouch(direction, goblinObject){ //this function moves the player 
                 moveGoblin(goblinObject, "ABOVE");
                 break; 
             }//end of switch 
-    } player1.health -= 5; //console.log(player1.health);
+    } player1.health -= 10; //console.log(player1.health);
 
 }
 

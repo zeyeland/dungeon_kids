@@ -94,3 +94,4 @@ function checkGadflyCollisions(direction,focusObject){
   return false;
 
 }
+
