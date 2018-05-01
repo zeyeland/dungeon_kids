@@ -7,8 +7,10 @@ function checkMapTileCollisions(direction, focusObject){
   var checkLava = checkLavaCollisions(direction, focusObject);
   var checkGoblin = checkGoblinCollisions(direction, focusObject);
   var checkGadfly = checkGadflyCollisions(direction, focusObject);
+  var checkStone = checkMovingStoneCollisions(direction, focusObject);
+  var checkKeyDoor = checkkeyDoorCollisions(direction, focusObject);
 
-  if(checkWall == true || checkLava == true || checkGoblin == true || checkGadfly == true ){
+  if(checkWall == true || checkLava == true || checkGoblin == true || checkGadfly == true || checkStone == true || checkKeyDoor == true ){
     return true
   }
   else return false;
@@ -95,3 +97,92 @@ function checkGadflyCollisions(direction,focusObject){
 
 }
 
+function checkMovingStoneCollisions(direction,focusObject){
+
+  if(direction == "ABOVE" && stoneList.includes(objectGrid[focusObject.y/50-1][focusObject.x/50])  ){
+    objectGrid[focusObject.y/50-1][focusObject.x/50].y -= 50;
+    objectGrid[focusObject.y/50-2][focusObject.x/50] = objectGrid[focusObject.y/50-1][focusObject.x/50];
+    objectGrid[focusObject.y/50-1][focusObject.x/50] = 0;
+    return false;
+  }
+  if(direction == "BELOW" && stoneList.includes(objectGrid[focusObject.y/50+1][focusObject.x/50]) ){
+    objectGrid[focusObject.y/50+1][focusObject.x/50].y += 50;
+    objectGrid[focusObject.y/50+2][focusObject.x/50] = objectGrid[focusObject.y/50+1][focusObject.x/50]
+    objectGrid[focusObject.y/50+1][focusObject.x/50] = 0;
+    return false;
+  }
+  if(direction == "LEFT" && stoneList.includes(objectGrid[focusObject.y/50][focusObject.x/50-1]) ){
+    objectGrid[focusObject.y/50][focusObject.x/50-1].x -= 50;
+    objectGrid[focusObject.y/50][focusObject.x/50-2] = objectGrid[focusObject.y/50][focusObject.x/50-1]
+    objectGrid[focusObject.y/50][focusObject.x/50-1] = 0;
+    return false;
+  }
+  if(direction == "RIGHT" && stoneList.includes(objectGrid[focusObject.y/50][focusObject.x/50+1]) ){
+    objectGrid[focusObject.y/50][focusObject.x/50+1].x += 50;
+    objectGrid[focusObject.y/50][focusObject.x/50+2] = objectGrid[focusObject.y/50][focusObject.x/50+1];
+    objectGrid[focusObject.y/50][focusObject.x/50+1] = 0;
+    return false;
+  }
+  
+  return false;
+}
+
+function checkDoorCollisionsGoblin(direction,focusObject){
+  if(direction == "ABOVE" && entranceDoorList.includes(objectGrid[focusObject.y/50-1][focusObject.x/50])  ){
+    return true;
+  }
+  if(direction == "BELOW" && entranceDoorList.includes(objectGrid[focusObject.y/50+1][focusObject.x/50]) ){
+    return true;
+  }
+  if(direction == "LEFT" && entranceDoorList.includes(objectGrid[focusObject.y/50][focusObject.x/50-1]) ){
+    return true;
+  }
+  if(direction == "RIGHT" && entranceDoorList.includes(objectGrid[focusObject.y/50][focusObject.x/50+1]) ){
+    return true;
+  }
+  
+  return false;
+}
+
+function checkTreeCollisionsGoblin(direction, focusObject){
+  if(direction == "ABOVE" && treeList.includes(objectGrid[focusObject.y/50-1][focusObject.x/50])  ){
+    return true;
+  }
+  if(direction == "BELOW" && treeList.includes(objectGrid[focusObject.y/50+1][focusObject.x/50]) ){
+    return true;
+  }
+  if(direction == "LEFT" && treeList.includes(objectGrid[focusObject.y/50][focusObject.x/50-1]) ){
+    return true;
+  }
+  if(direction == "RIGHT" && treeList.includes(objectGrid[focusObject.y/50][focusObject.x/50+1]) ){
+    return true;
+  }
+  
+  return false;
+}
+
+function checkkeyDoorCollisions(direction,focusObject){
+
+    
+
+    if(direction == "ABOVE" && keyDoorList.includes(objectGrid[focusObject.y/50-1][focusObject.x/50]) && 
+      objectGrid[focusObject.y/50-1][focusObject.x/50].locked == true ){
+      return true;
+    }
+    if(direction == "BELOW" && keyDoorList.includes(objectGrid[focusObject.y/50+1][focusObject.x/50]) && 
+    objectGrid[focusObject.y/50+1][focusObject.x/50].locked == true ){
+      return true;
+    }
+    if(direction == "LEFT" && keyDoorList.includes(objectGrid[focusObject.y/50][focusObject.x/50-1]) && 
+    objectGrid[focusObject.y/50][focusObject.x/50-1].locked == true ){
+      return true;
+    }
+    if(direction == "RIGHT" && keyDoorList.includes(objectGrid[focusObject.y/50][focusObject.x/50+1]) && 
+    objectGrid[focusObject.y/50][focusObject.x/50+1].locked == true ){
+      return true;
+    }
+  
+  return false;
+  
+
+}

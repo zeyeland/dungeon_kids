@@ -1,14 +1,16 @@
 //playerComponnet
 function playerComponnet(){
-    this.health =200;
+    this.health = 200;
     this.x = 3500; //starting position;
     this.spdX = 50; // player speed
-    this.y = 1000; // starting position
+    this.y = 250; // starting position
     this.spdY= 50;  // player speed
     this.playerImage = new Image(); //player img with src
     this.playerImage.src = "assets/player_Sprites/playerChill-Right.png";
     //
-    this.inventory = [];
+    this.inventoryBooks = [];
+    this.inventoryKeys = [];
+    this.inventoryScrolls = [];
     this.questList = [];
     ///
     this.talk2NPC = false;
@@ -24,8 +26,8 @@ function playerComponnet(){
         document.onkeydown = function(e) { //detects movement with keys strokes
             switch (e.keyCode) {
                 case 77: //debuging key
-                console.log(objectGrid[350/50][550/50]);
-                console.log(objectGrid[350/50][500/50]);
+                console.log(player1.inventoryKeys.includes(trumpKey) );
+                console.log();
                    
                 break;
                 case 65:
@@ -103,17 +105,18 @@ function playerComponnet(){
             //is not centered in its origin
             var clickX = event.clientX;
             var clickY = event.clientY;
-            console.log(clickX + " vs " + canvas.width/2);
-            console.log(clickY + " vs " + canvas.height/2);
+            console.log(player1.x);
+            console.log(player1.y);
+            console.log(player1.health);
                 if(clickY < canvas.height/2 +15 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png"; 
                     playerAttack("UP",parentThis);
-                    console.log("attack up");
+                    //console.log("attack up");
                 }
                 if(clickY > canvas.height/2 + 70 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Down.png";
                     playerAttack("DOWN",parentThis);
-                    console.log("attack down");
+                    //console.log("attack down");
                 }
                  if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 75 ){
                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";

@@ -80,7 +80,7 @@ function drawObjectTiles(){
           if( bookList.includes(objectGrid[rowCount][columnCount]) && objectGrid[rowCount][columnCount].itemPickedUp == false){
             objectGrid[rowCount][columnCount].update();
             drawBook(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
-          }
+          }//end of code to dispaly and update books
           ///look for spear pressure plates
           if( spearPlateList.includes(objectGrid[rowCount][columnCount]) ){
             objectGrid[rowCount][columnCount].update();
@@ -91,8 +91,38 @@ function drawObjectTiles(){
             objectGrid[rowCount][columnCount].update();
             drawArrow(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
           }
-        //end of code to dispaly and update books
-        }
+          //looks for zot spawners
+          if( zotList.includes(objectGrid[rowCount][columnCount]) ){
+            objectGrid[rowCount][columnCount].update();
+            drawZot(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+          //lopoking for moving stones
+          if( stoneList.includes(objectGrid[rowCount][columnCount]) ){
+            objectGrid[rowCount][columnCount].update();
+            drawStone(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+          //check for entranddoors to draw and key doors
+          if( entranceDoorList.includes(objectGrid[rowCount][columnCount]) ){
+            //objectGrid[rowCount][columnCount].update();
+            drawDoor(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+          //check for key doors
+          if( keyDoorList.includes(objectGrid[rowCount][columnCount]) ){
+            objectGrid[rowCount][columnCount].update();
+            drawDoor(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+          
+          //checks for trees
+          if( treeList.includes(objectGrid[rowCount][columnCount]) ){
+            //objectGrid[rowCount][columnCount].update();
+            drawTree(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+          //check and draw keys
+          if( keyList.includes(objectGrid[rowCount][columnCount]) ){
+            objectGrid[rowCount][columnCount].update();
+            drawKey(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+        }//end of search
         else if(columnCount < 0){
         //console.log("skip regular function and add one to columnWhiteSpace");
         }

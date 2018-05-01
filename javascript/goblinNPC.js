@@ -127,7 +127,9 @@ function playerInScopeOfGoblin(goblinObject){
 }
 
 function moveGoblin(goblinObject, direction){
-    if(checkMapTileCollisions(direction,goblinObject) == false){
+    if(checkMapTileCollisions(direction,goblinObject) == false && checkDoorCollisionsGoblin(direction,goblinObject) == false
+        && checkTreeCollisionsGoblin(direction,goblinObject) == false)
+    {
         switch(direction) {
             case "RIGHT":
                 objectGrid[goblinObject.y / 50][goblinObject.x / 50] = 0;

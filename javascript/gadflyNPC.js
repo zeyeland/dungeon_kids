@@ -3,7 +3,7 @@ var obama = new obamaNPC();
 var trump = new trumpNPC();
 var songs = new songsNPC();
 var oprah = new oprahNPC();
-var prince = new princeNPC();
+var airmenRedTail = new redTailNPC();
 var hueyNewton = new hueyNewtonNPC();
 
 var gadflyNPCList = [];
@@ -12,13 +12,13 @@ gadflyNPCList.push(obama);
 gadflyNPCList.push(trump);
 gadflyNPCList.push(songs);
 gadflyNPCList.push(oprah);
-gadflyNPCList.push(prince);
+gadflyNPCList.push(airmenRedTail);
 gadflyNPCList.push(hueyNewton);
 
 function socratesNPC(){
     this.name = "Socrates"
-    this.y = 900;
-    this.x = 400;
+    this.y = 750;
+    this.x = 100;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/socrates.png";
     this.speak = ["Welcome, help me gather the gadfly books the goblins have stolen."];
@@ -57,8 +57,8 @@ function socratesNPC(){
 
 function obamaNPC(){
     this.name = "Obama"
-    this.y = 900;
-    this.x = 350;
+    this.y = 50;
+    this.x = 50;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/obama.png";
     this.speak = ["Hello its me barock obama"];
@@ -81,7 +81,7 @@ function obamaNPC(){
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
             //draw quest item
-            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            objectGrid[parentThis.book.y/50][parentThis.book.x/50] = parentThis.book;
             
         }
         if(this.book.itemPickedUp == true){
@@ -99,7 +99,7 @@ function trumpNPC(){
     this.speak = ["Lets get to it"];
     this.startedQuest = false;
     this.endedQuest = false;
-    this.book = trumpBook;
+    this.key = trumpKey;
     this.itemPickedUp = false;
     this.questCounter = 0;
 
@@ -114,17 +114,19 @@ function trumpNPC(){
                     player1.questList.push(parentThis);
             }
         }
-        if(this.startedQuest == true && this.book.itemPickedUp == false){
+        if(this.startedQuest == true && this.key.itemPickedUp == false){
             //draw quest item
-            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            keyList.push(this.key);
+            objectGrid[this.key.y/50][this.key.x/50] = parentThis.key;
            
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        if(this.key.itemPickedUp == true){
+            objectGrid[this.key.y/50][this.key.x/50] = 0;
         }
     }
 }
 
+////change songs
 function songsNPC(){
     this.name = "Song"
     this.y = 900;
@@ -162,8 +164,8 @@ function songsNPC(){
 
 function oprahNPC(){
     this.name = "Oprah"
-    this.y = 900;
-    this.x = 200;
+    this.y = 1350;
+    this.x = 2100;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/oprah.png";
     this.speak = ["you get a book, you get a book, everyone gets books"];
@@ -195,16 +197,16 @@ function oprahNPC(){
     }  
 }
 
-function princeNPC(){
-    this.name = "Prince"
-    this.y = 900;
-    this.x = 150;
+function redTailNPC(){
+    this.name = "Tuskegee Airmen"
+    this.y = 350;
+    this.x = 1950;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/prince.png";
-    this.speak = ["HEHEEEEEEE im prince baby. ITS TIME!!!"];
+    this.speak = ["Tuskegee Airmen"];
     this.startedQuest = false;
     this.endedQuest = false;
-    this.book = princeBook;
+    this.book = redTailBook;
     this.itemPickedUp = false;
     this.questCounter = 0;
 
@@ -212,7 +214,7 @@ function princeNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScopeOfGadfly(prince) == true ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(airmenRedTail) == true ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -232,8 +234,8 @@ function princeNPC(){
 
 function hueyNewtonNPC(){
     this.name = "Huey Newton"
-    this.y = 900;
-    this.x = 100;
+    this.y = 1850;
+    this.x = 350;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/hueyNewton.png";
     this.speak = ["i was a political activist"];
