@@ -14,12 +14,6 @@ document.querySelector('main').appendChild(canvas);
 //console.log(canvas.width/20 );
 //console.log(canvas.height/10 );
 
-var missionMessage = document.getElementById('missionMessage');
-var nameGadfly = document.getElementById('nameGadfly');
-var imageGadfly = document.getElementById('imageGadfly');
-
-var playerHealth = document.getElementById('playerHealth');
-
 var player1 = new playerComponnet()
 
 //drawMapTiles();
@@ -38,10 +32,16 @@ function update(){
     hueyNewton.update();*/
     //goblin1.update();
     playerStatusBoxUpdate();
-    playerActionBoxUpdate();
  }
 
 setInterval(update,40);
+
+
+var missionMessage = document.getElementById('missionMessage');
+var nameGadfly = document.getElementById('nameGadfly');
+var imageGadfly = document.getElementById('imageGadfly');
+var playerHealth = document.getElementById('playerHealth');
+var playerGold = document.getElementById('playerGold');
 
 function playerStatusBoxUpdate(){
     if( player1.questList.length != 0 ){
@@ -49,12 +49,12 @@ function playerStatusBoxUpdate(){
         nameGadfly.innerHTML = player1.questList[ player1.questList.length -1].name;
         imageGadfly.src = player1.questList[ player1.questList.length -1].npcImage.src;
     }
+
+    playerHealth.innerHTML = "Health :" + player1.health;
+    playerGold.innerHTML = "Gold :$" + player1.gold;
     
 }
 
-function playerActionBoxUpdate(){
-    //playerHealth.innerHTML = "Health :" + player1.health;
-}
 
 
 
