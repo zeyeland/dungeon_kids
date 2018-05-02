@@ -2,9 +2,9 @@
 function playerComponnet(){
     this.gold = 0;
     this.health = 200;
-    this.x = 3500; //starting position;
+    this.x = 3600; //starting position;
     this.spdX = 50; // player speed
-    this.y = 250; // starting position
+    this.y = 550; // starting position
     this.spdY= 50;  // player speed
     this.playerImage = new Image(); //player img with src
     this.playerImage.src = "assets/player_Sprites/playerChill-Right.png";
@@ -108,7 +108,7 @@ function playerComponnet(){
             var clickY = event.clientY;
             console.log(player1.x);
             console.log(player1.y);
-            console.log(player1.health);
+           // console.log(player1.health);
                 if(clickY < canvas.height/2 +15 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png"; 
                     playerAttack("UP",parentThis);
@@ -149,13 +149,16 @@ function playerComponnet(){
 function drawPlayer(){
 
     if(player1.attackDrawing == "right"){
-        ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,100,50);
+        //ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,100,50);
+        ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,canvas.width/20*2,canvas.height/10);;
     }
     if(player1.attackDrawing == "left"){
-        ctx.drawImage(player1.playerImage,canvas.width/2-50,canvas.height/2,100,50);
+        //ctx.drawImage(player1.playerImage,canvas.width/2-50,canvas.height/2,100,50);
+        ctx.drawImage(player1.playerImage,canvas.width/2-(canvas.width/20),canvas.height/2,canvas.width/20*2,canvas.height/10);
+        
     }
     if(player1.attackDrawing == false){
-        ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,50,50);
+        ctx.drawImage(player1.playerImage,canvas.width/2,canvas.height/2,canvas.width/20,canvas.height/10);
     }
 
     

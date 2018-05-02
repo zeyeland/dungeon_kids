@@ -97,8 +97,8 @@ function smallGoblinComponnet(name,x,y,imageSRC,){
 
 }// end of player commpnnet
 
-function drawGoblin(focusObject,whiteSpaceX,whiteSpaceY){
-    ctx.drawImage(focusObject.goblinImage,whiteSpaceX*50,whiteSpaceY*50,50,50);
+function drawGoblin(focusObject,whitespaceX,whitespaceY){
+    ctx.drawImage(focusObject.goblinImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function isGoblin(){

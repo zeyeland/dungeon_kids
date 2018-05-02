@@ -17,6 +17,6 @@ function goldDropGoblin(x,y){
     }
 }
 
-function drawGold(focusObject,whiteSpaceX,whiteSpaceY){
-    ctx.drawImage(focusObject.moneyImage,whiteSpaceX*50,whiteSpaceY*50,50,50);
+function drawGold(focusObject,whitespaceX,whitespaceY){
+    ctx.drawImage(focusObject.moneyImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }

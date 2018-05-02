@@ -114,17 +114,17 @@ function keyDoors(x,y,key){
 }
 
 function drawDoor(objectFocus,whitespaceX,whitespaceY){
-    ctx.drawImage(objectFocus.doorImage,whitespaceX*50,whitespaceY*50,50,50);
+    ctx.drawImage(objectFocus.doorImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function drawTree(objectFocus,whitespaceX,whitespaceY){
     if(objectFocus != 0)
-    ctx.drawImage(objectFocus.treeImage,whitespaceX*50,whitespaceY*50,50,50);
+    ctx.drawImage(objectFocus.treeImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function drawKey(objectFocus,whitespaceX,whitespaceY){
     if(objectFocus != 0)
-    ctx.drawImage(objectFocus.keyImage,whitespaceX*50,whitespaceY*50,50,50);
+    ctx.drawImage(objectFocus.keyImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function getKeyOwner(ownerOfKey){

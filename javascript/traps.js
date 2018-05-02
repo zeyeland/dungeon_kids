@@ -128,23 +128,23 @@ function movingStone(x,y){
 
 
 function drawPlate(objectFocus,whitespaceX,whitespaceY){
-    ctx.drawImage(objectFocus.plateImage,whitespaceX*50,whitespaceY*50,50,50);
+    ctx.drawImage(objectFocus.plateImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function drawArrow(objectFocus,whitespaceX,whitespaceY){
     //console.log(objectFocus);
     if(objectFocus != 0){
-        ctx.drawImage(objectFocus.arrowImage,whitespaceX*50,whitespaceY*50,50,50);
+        ctx.drawImage(objectFocus.arrowImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
     }
     
 }
 
 function drawZot(objectFocus,whitespaceX,whitespaceY){
-    ctx.drawImage(objectFocus.zotImage,whitespaceX*50,whitespaceY*50,50,50);
+    ctx.drawImage(objectFocus.zotImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function drawStone(objectFocus,whitespaceX,whitespaceY){
     if(objectFocus != 0){
-        ctx.drawImage(objectFocus.stoneImage,whitespaceX*50,whitespaceY*50,50,50);
+        ctx.drawImage(objectFocus.stoneImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
     }
 }

@@ -1,19 +1,31 @@
 var socrates = new socratesNPC();
 var obama = new obamaNPC();
 var trump = new trumpNPC();
-var songs = new songsNPC();
+var kathleenCleaver = new cleaverNPC();
 var oprah = new oprahNPC();
 var airmenRedTail = new redTailNPC();
 var hueyNewton = new hueyNewtonNPC();
+var harrietTubman = new tubmanNPC();
+var pastor = new pasterNPC();
+var marianAnderson = new andersonNPC();
+var marcusGarvey = new garveyNPC();
+var joelRogers = new rogersNPC();
+
+
 
 var gadflyNPCList = [];
 gadflyNPCList.push(socrates);
 gadflyNPCList.push(obama);
 gadflyNPCList.push(trump);
-gadflyNPCList.push(songs);
+gadflyNPCList.push(kathleenCleaver);
 gadflyNPCList.push(oprah);
 gadflyNPCList.push(airmenRedTail);
 gadflyNPCList.push(hueyNewton);
+gadflyNPCList.push(harrietTubman);
+gadflyNPCList.push(pastor);
+gadflyNPCList.push(marianAnderson);
+gadflyNPCList.push(marcusGarvey);
+gadflyNPCList.push(joelRogers);
 
 function socratesNPC(){
     this.name = "Socrates"
@@ -128,16 +140,16 @@ function trumpNPC(){
 }
 
 ////change songs
-function songsNPC(){
-    this.name = "Song"
+function cleaverNPC(){
+    this.name = "Kathleen Cleaver"
     this.y = 900;
     this.x = 250;
     this.npcImage = new Image()
-    this.npcImage.src = "assets/gadfly_sprites/songs.png";
+    this.npcImage.src = "assets/gadfly_sprites/kathleenCleaver.png";
     this.speak = ["Your a superstar"];
     this.startedQuest = false;
     this.endedQuest = false;
-    this.book = songsBook;
+    this.book = cleaverBook;
     this.itemPickedUp = false;
     this.questCounter = 0;
 
@@ -145,7 +157,7 @@ function songsNPC(){
 
     this.update = function(){
         var parentThis = this;
-        if(player1.talk2NPC == true && playerInScopeOfGadfly(songs) == true ){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(kathleenCleaver) == true ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
                 console.log(parentThis.speak[0]);
@@ -269,8 +281,184 @@ function hueyNewtonNPC(){
     }  
 }
 
-function drawNPC(focusObject,whiteSpaceX,whiteSpaceY){
-    ctx.drawImage(focusObject.npcImage,whiteSpaceX*50,whiteSpaceY*50,50,50);
+function tubmanNPC(){
+    this.name = "Harriet Tubman"
+    this.y = 900;
+    this.x = 350;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/harrietTubman.png";
+    this.speak = ["Your a superstar"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = tubmanBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(harrietTubman) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }
+}
+
+function pasterNPC(){
+    this.name = "The Pastor"
+    this.y = 900;
+    this.x = 200;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/pastor.png";
+    this.speak = ["Your a superstar"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = pastorBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(pastor) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }
+}
+
+function andersonNPC(){
+    this.name = "Marian Anderson"
+    this.y = 900;
+    this.x = 150;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/marianAnderson.png";
+    this.speak = ["Its me Marian Anderson"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = andersonBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(marianAnderson) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }
+}
+
+function garveyNPC(){
+    this.name = "Marcus Garvey"
+    this.y = 900;
+    this.x = 100;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/marcusGarvey.png";
+    this.speak = ["Its me Marcus Garvey"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = garveyBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(marcusGarvey) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }
+}
+
+function rogersNPC(){
+    this.name = "Joel Rogers"
+    this.y = 850;
+    this.x = 100;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/gadfly_sprites/joelRogers.png";
+    this.speak = ["Your a superstar"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    this.book = rogersBook;
+    this.itemPickedUp = false;
+    this.questCounter = 0;
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(joelRogers) == true ){
+            this.startedQuest = true;
+            if(parentThis.questCounter == 0){
+                console.log(parentThis.speak[0]);
+                    player1.questList.push(parentThis);
+            }
+        }
+        if(this.startedQuest == true && this.book.itemPickedUp == false){
+            //draw quest item
+            objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
+            
+        }
+        if(this.book.itemPickedUp == true){
+            objectGrid[this.book.y/50][this.book.x/50] = 0;
+        }
+    }
+}
+
+
+function drawNPC(focusObject,whitespaceX,whitespaceY){
+    ctx.drawImage(focusObject.npcImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
 }
 
 function playerInScopeOfGadfly(NpcObject){

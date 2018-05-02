@@ -106,33 +106,33 @@ function drawMapTiles(){
           if(columnCount>=0){
             if(mapGrid[rowCount][columnCount] == 9)
             { 
-              ctx.drawImage(stone_wall_tile,whiteSpaceX*50,whiteSpaceY*50,50,50);
+              ctx.drawImage(stone_wall_tile,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 0){ // if for grass
-              ctx.drawImage(sand_Tile,whiteSpaceX*50,whiteSpaceY*50,50,50);
+              ctx.drawImage(sand_Tile,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 1){ // if for rock ground
-                ctx.drawImage(wool_floor,whiteSpaceX*50,whiteSpaceY*50,50,50);
+                ctx.drawImage(wool_floor,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 2){ // if for wool tile
-                ctx.drawImage(barracks_Floor,whiteSpaceX*50,whiteSpaceY*50,50,50);
+                ctx.drawImage(barracks_Floor,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 3){ // if for water tile
-                ctx.drawImage(cage_Floor,whiteSpaceX*50,whiteSpaceY*50,50,50);
+                ctx.drawImage(cage_Floor,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
                 //ctx.drawImage(water_tile,50,55,100,100,columnCount*50,rowCount*50,100,100);
             }
             if(mapGrid[rowCount][columnCount] == 4){ // if for water tile
-              ctx.drawImage(sand_Tile,whiteSpaceX*50,whiteSpaceY*50,50,50);
-              ctx.drawImage(water_Wave,whiteSpaceX*50,whiteSpaceY*50,50,50);
+              ctx.drawImage(sand_Tile,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
+              ctx.drawImage(water_Wave,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 5){ // if for water tile
-              ctx.drawImage(water_Floor,whiteSpaceX*50,whiteSpaceY*50,50,50);
+              ctx.drawImage(water_Floor,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 6){ // if for water tile
-              ctx.drawImage(grass_Tile,whiteSpaceX*50,whiteSpaceY*50,50,50);
+              ctx.drawImage(grass_Tile,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
             if(mapGrid[rowCount][columnCount] == 8){ // if for skyr_tile
-                ctx.drawImage(lava_Tile,whiteSpaceX*50,whiteSpaceY*50,50,50);
+                ctx.drawImage(lava_Tile,whiteSpaceX*canvas.width/20,whiteSpaceY*canvas.height/10,canvas.width/20,canvas.height/10);
             }
           }
           else if(columnCount < 0){

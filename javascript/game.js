@@ -1,6 +1,18 @@
-
-var canvas = document.getElementById('canvas');
+//Create the canvas
+//var canvas = document.getElementById('canvasMain');
+var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
+
+var mWidth = document.querySelector('main').offsetWidth;
+var mHeight = document.querySelector('main').offsetHeight;
+
+//Modify canvas
+canvas.width = mWidth;
+canvas.height = mHeight;
+document.querySelector('main').appendChild(canvas);
+
+//console.log(canvas.width/20 );
+//console.log(canvas.height/10 );
 
 var missionMessage = document.getElementById('missionMessage');
 var nameGadfly = document.getElementById('nameGadfly');

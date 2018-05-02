@@ -1,5 +1,5 @@
 div {
-    width: 250px;
+    width: 19%;
     height: 500px;
     margin: auto;
     border: 1px solid rgb(0, 0, 0);
@@ -12,6 +12,8 @@ img {
     height: 100px;
 } 
 
-canvas{
+#canvasMain{
     float: left;
+    width: 78%;
+    height: 500px;
 }
