@@ -96,7 +96,7 @@ function trumpNPC(){
     this.x = 300;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/trump.png";
-    this.speak = ["Lets get to it"];
+    this.speak = ["I cant find my way off this bloody island, perhabs I need more money.", "Bring me 24 gold coins and I will give you a special key."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.key = trumpKey;
@@ -110,14 +110,15 @@ function trumpNPC(){
         if(player1.talk2NPC == true && playerInScopeOfGadfly(trump)  ){
             this.startedQuest = true;
             if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
+                console.log(parentThis.speak[1]);
                     player1.questList.push(parentThis);
             }
         }
-        if(this.startedQuest == true && this.key.itemPickedUp == false){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(trump) && this.startedQuest == true && this.key.itemPickedUp == false && player1.gold >= 24){
             //draw quest item
             keyList.push(this.key);
             objectGrid[this.key.y/50][this.key.x/50] = parentThis.key;
+            player1.gold -= 24;
            
         }
         if(this.key.itemPickedUp == true){
@@ -202,7 +203,7 @@ function redTailNPC(){
     this.y = 350;
     this.x = 1950;
     this.npcImage = new Image()
-    this.npcImage.src = "assets/gadfly_sprites/prince.png";
+    this.npcImage.src = "assets/gadfly_sprites/redTail.png";
     this.speak = ["Tuskegee Airmen"];
     this.startedQuest = false;
     this.endedQuest = false;

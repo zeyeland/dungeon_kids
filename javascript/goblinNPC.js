@@ -74,7 +74,10 @@ function smallGoblinComponnet(name,x,y,imageSRC,){
         var parentThis = this;
         //check the goblins health
         if(parentThis.health <= 0){
-            objectGrid[parentThis.y / 50][parentThis.x / 50] = 0
+            objectGrid[parentThis.y / 50][parentThis.x / 50] = 0;
+            var goldDrop = new goldDropGoblin(parentThis.x, parentThis.y);
+            goldList.push(goldDrop);
+            objectGrid[parentThis.y / 50][parentThis.x / 50] = goldDrop;
         }
         //checks proximity for goblin AI
         if( parentThis.moveGoblinTimer >= 15 && playerInScopeOfGoblin(parentThis) != false ) {

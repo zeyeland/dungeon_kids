@@ -76,6 +76,11 @@ function drawObjectTiles(){
               drawGoblin(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
             }  
           } 
+          //check for gold after goblins die
+          if( goldList.includes(objectGrid[rowCount][columnCount]) && objectGrid[rowCount][columnCount].itemPickedUp == false){
+            objectGrid[rowCount][columnCount].update();
+            drawGold(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
           // if statement checks object grid for every instance of a book
           if( bookList.includes(objectGrid[rowCount][columnCount]) && objectGrid[rowCount][columnCount].itemPickedUp == false){
             objectGrid[rowCount][columnCount].update();
@@ -111,7 +116,6 @@ function drawObjectTiles(){
             objectGrid[rowCount][columnCount].update();
             drawDoor(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
           }
-          
           //checks for trees
           if( treeList.includes(objectGrid[rowCount][columnCount]) ){
             //objectGrid[rowCount][columnCount].update();

@@ -1,5 +1,6 @@
 //playerComponnet
 function playerComponnet(){
+    this.gold = 0;
     this.health = 200;
     this.x = 3500; //starting position;
     this.spdX = 50; // player speed
