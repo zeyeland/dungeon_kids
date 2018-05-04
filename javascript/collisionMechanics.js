@@ -9,8 +9,11 @@ function checkMapTileCollisions(direction, focusObject){
   var checkGadfly = checkGadflyCollisions(direction, focusObject);
   var checkStone = checkMovingStoneCollisions(direction, focusObject);
   var checkKeyDoor = checkkeyDoorCollisions(direction, focusObject);
+  var checkTree = checkTreeCollisionsGoblin(direction, focusObject);
 
-  if(checkWall == true || checkLava == true || checkGoblin == true || checkGadfly == true || checkStone == true || checkKeyDoor == true ){
+  if(checkWall == true || checkLava == true || checkGoblin == true || 
+    checkGadfly == true || checkStone == true || checkKeyDoor == true || checkTree == true)
+  {
     return true
   }
   else return false;
@@ -22,20 +25,20 @@ function checkLavaCollisions(direction,focusObject){
   
   if(direction == "ABOVE" && mapGrid[focusObject.y/50-1][focusObject.x/50] == 8){
     focusObject.health = 0;
-    return true;
+    return false;
   }
   if(direction == "BELOW" && mapGrid[focusObject.y/50+1][focusObject.x/50] == 8){
     focusObject.health = 0;
-    return true;
+    return false;
   }
   if(direction == "LEFT" && mapGrid[focusObject.y/50][focusObject.x/50-1] == 8){
 
     focusObject.health = 0;
-    return true;
+    return false;
   }
   if(direction == "RIGHT" && mapGrid[focusObject.y/50][focusObject.x/50+1] == 8){
     focusObject.health = 0;
-    return true;
+    return false;
   }
   return false;
 }
@@ -185,4 +188,19 @@ function checkkeyDoorCollisions(direction,focusObject){
   return false;
   
 
+}
+
+
+var waterTimer = 0; //this function is not a true collision so it shouldnt be checked before player is moved
+function checkWaterCollisions(focusObject){
+  
+  waterTimer++;
+  //console.log("testing water function");
+  if(mapGrid[focusObject.y/50][focusObject.x/50] == 5 && focusObject.moveWithGrate == false){
+    focusObject.health -= 3;
+    waterTimer = 0;
+    //return false;
+  }
+ 
+  //return false;
 }

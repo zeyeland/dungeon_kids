@@ -31,6 +31,10 @@ function update(){
     prince.update();
     hueyNewton.update();*/
     //goblin1.update();
+    grate1.update();
+    grate2.update();
+    grate3.update();
+    grate4.update();
     playerStatusBoxUpdate();
  }
 

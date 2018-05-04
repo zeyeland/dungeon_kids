@@ -148,3 +148,42 @@ function drawStone(objectFocus,whitespaceX,whitespaceY){
         ctx.drawImage(objectFocus.stoneImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
     }
 }
+
+
+var transporter1 = new transporterPlateStart(950,1500);
+var transporter2 = new transporterPlateEnd(2650,1850);
+var transporterList = [];
+transporterList.push(transporter1);
+transporterList.push(transporter2);
+
+function transporterPlateStart(x,y){
+    this.x = x;
+    this.y = y;
+    this.zotImage = new Image(); //player img with src
+    this.zotImage.src = "assets/traps/teleport_Start.png";
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        parentThis = this;
+        if(parentThis.x == player1.x && parentThis.y == player1.y){
+            player1.x = 2650;
+            player1.y = 1800;
+        }
+    }
+}
+
+function transporterPlateEnd(x,y){
+    this.x = x;
+    this.y = y;
+    this.zotImage = new Image(); //player img with src
+    this.zotImage.src = "assets/traps/teleport_End.png";
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        parentThis = this;
+        if(parentThis.x == player1.x && parentThis.y == player1.y){
+            player1.x = 900;
+            player1.y = 1500;
+        }
+    }
+}

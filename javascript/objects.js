@@ -30,6 +30,7 @@ var tree11 = new trees(3300,1550);
 var tree12 = new trees(3900,1650);
 var tree13 = new trees(3350,1800);
 var tree14 = new trees(2150,1350);
+var tree15 = new trees(500,1000);
 
 var treeList = [];
 treeList.push(tree1);
@@ -46,13 +47,21 @@ treeList.push(tree11);
 treeList.push(tree12);
 treeList.push(tree13);
 treeList.push(tree14);
+treeList.push(tree15);
 
 function trees(x,y){
+    this.health = 100;
     this.x = x;
     this.y = y;
     this.treeImage = new Image(); //player img with src
     this.treeImage.src = "assets/setting_objects/mangrove_3.png";
     objectGrid[this.y/50][this.x/50] = this; 
+
+    this.update = function(){
+        if(this.health <= 0){
+            objectGrid[this.y/50][this.x/50] = 0; 
+        }
+    }
 }
 
 const key1 = new keys("Key 1",300,50,"Lock 1");
@@ -163,4 +172,136 @@ function playerInScopeOfDoor(doorObject){
      }
      return false;
  
- }
+}
+
+grate1Array = ["DOWN","DOWN"];
+var grate1 = new waterGrates(650,1300,grate1Array);
+
+grate2Array = ["RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","RIGHT"
+,"RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","RIGHT"
+,"RIGHT","DOWN"];
+var grate2 = new waterGrates(400,1750,grate2Array);
+
+grate3Array = ["LEFT","LEFT","LEFT","LEFT","LEFT","LEFT","LEFT","LEFT","LEFT","LEFT","LEFT","LEFT"];
+var grate3 = new waterGrates(2100,1500,grate3Array);
+
+grate4Array = ["DOWN","DOWN","DOWN","DOWN","DOWN","DOWN","DOWN","RIGHT","DOWN","RIGHT","RIGHT","RIGHT"
+,"RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","RIGHT","UP","UP","UP","UP"];
+var grate4 = new waterGrates(350,1300,grate4Array);
+
+var gratesList = [];
+gratesList.push(grate1);
+gratesList.push(grate2);
+gratesList.push(grate3);
+gratesList.push(grate4);
+
+function waterGrates(x,y,grateArray){
+    this.x = x;
+    this.y = y;
+    this.grateImage = new Image(); 
+    this.grateImage.src = "assets/setting_objects/grate.png";
+    objectGrid[this.y/50][this.x/50] = this;
+    this.grateArray = grateArray;
+    //this.movementHistory = [];
+    this.count = 0;
+    this.moveGrateTimer = 0;
+    this.moveGrateReverseBoolean = false;
+
+    this.update = function(){
+        //console.log(this.moveGrateTimer);
+        if(this.moveGrateTimer >= 15 && this.count < this.grateArray.length && this.moveGrateReverseBoolean == false){
+            //console.log("direction");
+            moveGrate(this,this.grateArray[this.count]);
+            this.moveGrateTimer = 0;
+            this.count++;
+        }
+        if(this.count >= this.grateArray.length && this.moveGrateReverseBoolean == false){
+            this.moveGrateReverseBoolean = true;
+            this.count--;
+        }
+        if(this.moveGrateTimer >= 15 && this.count >= 0 && this.moveGrateReverseBoolean == true){
+            moveGrateReverse(this,this.grateArray[this.count]);
+            this.moveGrateTimer = 0;
+            this.count--;
+        }
+        if(this.count < 0 && this.moveGrateReverseBoolean == true){
+            this.count=0;
+            this.moveGrateReverseBoolean = false;
+        }
+
+        if(player1.moveWithGrate == this){
+            player1.x = this.x;
+            player1.y = this.y;
+        }
+
+        this.moveGrateTimer++;
+    }
+}
+
+function drawGrate(objectFocus,whitespaceX,whitespaceY){
+    if(objectFocus != 0)
+    ctx.drawImage(objectFocus.grateImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
+}
+
+function moveGrate(grateObject, direction){
+    //console.log(direction);
+        switch(direction) {
+            case "RIGHT":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50][grateObject.x / 50 + 1] = grateObject;
+                grateObject.x += 50;
+                //grateObject.movementHistory.push(direction);
+                break;
+            case"LEFT":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50][grateObject.x / 50 - 1] = grateObject;
+                grateObject.x -= 50;
+                //grateObject.movementHistory.push(direction);
+                break;
+            case"UP":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50 - 1][grateObject.x / 50] = grateObject;
+                grateObject.y -= 50;
+                //grateObject.movementHistory.push(direction);
+                break;
+            case"DOWN":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50 + 1][grateObject.x / 50] = grateObject;
+                grateObject.y += 50;
+                //grateObject.movementHistory.push(direction);
+                break; 
+            }//end of switch   
+}
+
+function moveGrateReverse(grateObject, direction){
+   // console.log(direction); // do the oppiste for each direction
+        switch(direction) {
+            case "RIGHT":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50][grateObject.x / 50 - 1] = grateObject;
+                grateObject.x -= 50;
+                //grateObject.movementHistory.push(direction);
+                break;
+            case"LEFT":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50][grateObject.x / 50 + 1] = grateObject;
+                grateObject.x += 50;
+                //grateObject.movementHistory.push(direction);
+                break;
+            case"UP":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50 + 1][grateObject.x / 50] = grateObject;
+                grateObject.y += 50;
+                //grateObject.movementHistory.push(direction);
+                break;
+            case"DOWN":
+                objectGrid[grateObject.y / 50][grateObject.x / 50] = 0;
+                objectGrid[grateObject.y / 50 - 1][grateObject.x / 50] = grateObject;
+                grateObject.y -= 50;
+                //grateObject.movementHistory.push(direction);
+                break; 
+            }//end of switch   
+}//end of if
+
+
+    

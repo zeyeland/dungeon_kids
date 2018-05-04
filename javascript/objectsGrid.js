@@ -101,6 +101,11 @@ function drawObjectTiles(){
             objectGrid[rowCount][columnCount].update();
             drawZot(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
           }
+          //looks for transporter pads
+          if( transporterList.includes(objectGrid[rowCount][columnCount]) ){
+            objectGrid[rowCount][columnCount].update();
+            drawZot(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
           //lopoking for moving stones
           if( stoneList.includes(objectGrid[rowCount][columnCount]) ){
             objectGrid[rowCount][columnCount].update();
@@ -118,7 +123,7 @@ function drawObjectTiles(){
           }
           //checks for trees
           if( treeList.includes(objectGrid[rowCount][columnCount]) ){
-            //objectGrid[rowCount][columnCount].update();
+            objectGrid[rowCount][columnCount].update();
             drawTree(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
           }
           //check and draw keys
@@ -126,6 +131,12 @@ function drawObjectTiles(){
             objectGrid[rowCount][columnCount].update();
             drawKey(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
           }
+          //checks for grates in the water
+          if( gratesList.includes(objectGrid[rowCount][columnCount]) ){
+            //objectGrid[rowCount][columnCount].update(); we will update grats in main game loop
+            drawGrate(objectGrid[rowCount][columnCount],whiteSpaceX,whiteSpaceY);
+          }
+          
         }//end of search
         else if(columnCount < 0){
         //console.log("skip regular function and add one to columnWhiteSpace");

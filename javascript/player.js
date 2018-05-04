@@ -2,9 +2,9 @@
 function playerComponnet(){
     this.gold = 0;
     this.health = 200;
-    this.x = 3600; //starting position;
+    this.x = 600; //starting position;
     this.spdX = 50; // player speed
-    this.y = 550; // starting position
+    this.y = 1200; // starting position
     this.spdY= 50;  // player speed
     this.playerImage = new Image(); //player img with src
     this.playerImage.src = "assets/player_Sprites/playerChill-Right.png";
@@ -16,6 +16,8 @@ function playerComponnet(){
     ///
     this.talk2NPC = false;
     this.attackDrawing = false;
+    this.moveWithGrate = false;
+
     //
     /*player looking directions for sprites*/
     this.lookLeft = true;
@@ -25,6 +27,9 @@ function playerComponnet(){
         var parentThis = this;
         checkHealth();
         document.onkeydown = function(e) { //detects movement with keys strokes
+            if(parentThis.moveWithGrate != false){
+                parentThis.moveWithGrate = false;
+            }       
             switch (e.keyCode) {
                 case 77: //debuging key
                 console.log(player1.inventoryKeys.includes(trumpKey) );
@@ -134,9 +139,10 @@ function playerComponnet(){
         }//end of moue click down
         canvas.onmouseup = function(e){ //change image back to normal on mouse click up
             parentThis.playerImage.src = "assets/player_Sprites/playerChill-Left.png";
-            parentThis.attackDrawing = false;
-            
+            parentThis.attackDrawing = false;        
         }
+        playerCheckGrate(parentThis);
+        checkWaterCollisions(parentThis);
     ////////////////////////end of movement functions      
         drawPlayer();
     }//end of update function
@@ -172,31 +178,48 @@ function checkHealth(){
     }
 }
 
-function movePlayer(){
-    
+function playerCheckGrate(playerObject){
+    for(let k = 0; k < gratesList.length; k++){
+        if(gratesList[k].y == playerObject.y && gratesList[k].x == playerObject.x){
+            playerObject.moveWithGrate = gratesList[k];
+        }
+    }
+
+     /*if(player1.moveWithGrate == true){
+            player1.x = this.x;
+            player1.y = this.y;
+        }*/
 }
 
 function playerAttack(direction,objectFocus){
     if(direction == "UP"){
-        if( goblinNPCList.includes(objectGrid[objectFocus.y/50-1][objectFocus.x/50]) ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50-1][objectFocus.x/50]) ||
+            treeList.includes(objectGrid[objectFocus.y/50-1][objectFocus.x/50])  )
+        {
             objectGrid[objectFocus.y/50-1][objectFocus.x/50].health = objectGrid[objectFocus.y/50-1][objectFocus.x/50].health - 25;
             console.log("hit UP was a success");
         }
     }
     if(direction == "DOWN"){
-        if( goblinNPCList.includes(objectGrid[objectFocus.y/50+1][objectFocus.x/50]) ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50+1][objectFocus.x/50]) ||
+            treeList.includes(objectGrid[objectFocus.y/50+1][objectFocus.x/50])  )
+        {
             objectGrid[objectFocus.y/50+1][objectFocus.x/50].health = objectGrid[objectFocus.y/50+1][objectFocus.x/50].health - 25;
             console.log("hit DOWN was a success");
         }
     }
     if(direction == "LEFT"){
-        if( goblinNPCList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50 - 1]) ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50 - 1])  ||
+            treeList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50-1])  )
+        {
             objectGrid[objectFocus.y/50][objectFocus.x/50-1].health = objectGrid[objectFocus.y/50][objectFocus.x/50-1].health - 25;
             console.log("hit LEFT was a success");
         }
     } 
     if(direction == "RIGHT"){
-        if( goblinNPCList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50 + 1]) ){
+        if( goblinNPCList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50 + 1])  ||
+            treeList.includes(objectGrid[objectFocus.y/50][objectFocus.x/50+1])  )
+        {
             objectGrid[objectFocus.y/50][objectFocus.x/50+1].health = objectGrid[objectFocus.y/50][objectFocus.x/50+1].health - 25;
             console.log("hit RIGHT was a success");
         }
