@@ -16,26 +16,26 @@ document.querySelector('main').appendChild(canvas);
 
 var player1 = new playerComponnet()
 
-//drawMapTiles();
+var gameTimer = 500;
 
 function update(){
-    ctx.clearRect(0,0, 2000, 5000); // clears new area after translate is complete
-    drawMapTiles();
-    drawObjectTiles(); // this methods draws objects and calls updated methods
-    player1.update(); // -- update function draws player - drawPlayer();
-    /*socrates.update();
-    obama.update();
-    trump.update();
-    songs.update();
-    oprah.update();
-    prince.update();
-    hueyNewton.update();*/
-    //goblin1.update();
-    grate1.update();
-    grate2.update();
-    grate3.update();
-    grate4.update();
-    playerStatusBoxUpdate();
+
+    if(gameTimer > 0){
+        ctx.clearRect(0,0, 2000, 5000); // clears new area after translate is complete
+        drawMapTiles();
+        drawObjectTiles(); // this methods draws objects and calls updated methods
+        player1.update(); // -- update function draws player - drawPlayer();
+        grate1.update();
+        grate2.update();
+        grate3.update();
+        grate4.update();
+        playerStatusBoxUpdate();
+        gameTimer --;
+        console.log(gameTimer);
+    }else{
+        console.log("game over");
+    }
+
  }
 
 setInterval(update,40);
@@ -46,6 +46,7 @@ var nameGadfly = document.getElementById('nameGadfly');
 var imageGadfly = document.getElementById('imageGadfly');
 var playerHealth = document.getElementById('playerHealth');
 var playerGold = document.getElementById('playerGold');
+var playerScore = document.getElementById('playerScore');
 
 function playerStatusBoxUpdate(){
     if( player1.questList.length != 0 ){
@@ -54,6 +55,7 @@ function playerStatusBoxUpdate(){
         imageGadfly.src = player1.questList[ player1.questList.length -1].npcImage.src;
     }
 
+    playerScore.innerHTML = "Score : " + player1.score;
     playerHealth.innerHTML = "Health :" + player1.health;
     playerGold.innerHTML = "Gold :$" + player1.gold;
     

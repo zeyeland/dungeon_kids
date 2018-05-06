@@ -104,8 +104,8 @@ function obamaNPC(){
 
 function trumpNPC(){
     this.name = "Trump"
-    this.y = 900;
-    this.x = 300;
+    this.y = 200;
+    this.x = 350;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/trump.png";
     this.speak = ["I cant find my way off this bloody island, perhabs I need more money.", "Bring me 24 gold coins and I will give you a special key."];
@@ -142,8 +142,8 @@ function trumpNPC(){
 ////change songs
 function cleaverNPC(){
     this.name = "Kathleen Cleaver"
-    this.y = 900;
-    this.x = 250;
+    this.y = 1750;
+    this.x = 3350;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/kathleenCleaver.png";
     this.speak = ["Your a superstar"];
@@ -283,8 +283,8 @@ function hueyNewtonNPC(){
 
 function tubmanNPC(){
     this.name = "Harriet Tubman"
-    this.y = 900;
-    this.x = 350;
+    this.y = 1250;
+    this.x = 1000;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/harrietTubman.png";
     this.speak = ["Your a superstar"];
@@ -318,8 +318,8 @@ function tubmanNPC(){
 
 function pasterNPC(){
     this.name = "The Pastor"
-    this.y = 900;
-    this.x = 200;
+    this.x = 3150;
+    this.y = 1550;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/pastor.png";
     this.speak = ["Your a superstar"];
@@ -353,8 +353,8 @@ function pasterNPC(){
 
 function andersonNPC(){
     this.name = "Marian Anderson"
-    this.y = 900;
-    this.x = 150;
+    this.y = 1500;
+    this.x = 2950;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/marianAnderson.png";
     this.speak = ["Its me Marian Anderson"];
@@ -389,7 +389,7 @@ function andersonNPC(){
 function garveyNPC(){
     this.name = "Marcus Garvey"
     this.y = 900;
-    this.x = 100;
+    this.x = 1850;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/marcusGarvey.png";
     this.speak = ["Its me Marcus Garvey"];
