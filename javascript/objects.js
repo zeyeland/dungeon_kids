@@ -77,6 +77,7 @@ function keys(name,x,y, keyOnwer){
     this.keyImage.src = "assets/items/key.png";
     this.keyOnwner = keyOnwer;
     this.itemPickedUp = false;
+    this.notes = "Used to open some door."
 
     objectGrid[this.y/50][this.x/50] = this; 
 
@@ -92,7 +93,10 @@ function keys(name,x,y, keyOnwer){
             if(getKeyOwner(parentThis.keyOnwner) != null){
                 var theKeyOwner = getKeyOwner(parentThis.keyOnwner);
             theKeyOwner.questCounter++;
-            }           
+            }     
+            missionMessage.innerHTML = parentThis.notes;
+            nameGadfly.innerHTML = parentThis.name;
+            imageGadfly.src = parentThis.keyImage.src;      
         }
        
     }

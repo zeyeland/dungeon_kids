@@ -1,7 +1,7 @@
 //playerComponnet
 function playerComponnet(){
-    this.gold = 0;
-    this.health = 2000000;
+    this.gold = 100;
+    this.health = 200;
     this.score = 0;
     this.x = 600; //starting position;
     this.spdX = 50; // player speed
@@ -32,9 +32,8 @@ function playerComponnet(){
                 parentThis.moveWithGrate = false;
             }       
             switch (e.keyCode) {
-                case 77: //debuging key
-                console.log(player1.inventoryKeys.includes(trumpKey) );
-                console.log();
+                case 77: //debuging key M 
+                
                    
                 break;
                 case 65:
@@ -112,31 +111,31 @@ function playerComponnet(){
             //is not centered in its origin
             var clickX = event.clientX;
             var clickY = event.clientY;
-            console.log(player1.x);
-            console.log(player1.y);
+            //console.log(player1.x);
+            //console.log(player1.y);
            // console.log(player1.health);
-                if(clickY < canvas.height/2 +15 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65){
+                if(clickY < canvas.height/2 + 65 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Up.png"; 
                     playerAttack("UP",parentThis);
                     //console.log("attack up");
                 }
-                if(clickY > canvas.height/2 + 70 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65 ){
+                if(clickY > canvas.height/2 + 118 && clickX > canvas.width/2 && clickX < canvas.width/2 + 65 ){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Down.png";
                     playerAttack("DOWN",parentThis);
                     //console.log("attack down");
                 }
-                 if(clickX < canvas.width/2 && clickY > canvas.height/2 && clickY < canvas.height/2 + 75 ){
+                 if(clickX < canvas.width/2 + 12 && clickY > canvas.height/2 + 65 && clickY < canvas.height/2 + 65 + 53){
                    parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Left.png";
                     playerAttack("LEFT",parentThis);
                     parentThis.attackDrawing = "left";
                     //console.log("attack left");
                 }
-                if(clickX > canvas.width/2 + 50 && clickY > canvas.height/2 + 15 && clickY < canvas.height/2 + 75 ){
+                if(clickX > canvas.width/2 + 60 && clickY > canvas.height/2 + 65 && clickY < canvas.height/2 + 115){
                     parentThis.playerImage.src = "assets/player_Sprites/attacking/attack-Sword-Right.png";
                     playerAttack("RIGHT",parentThis);
                     parentThis.attackDrawing = "right";
                     //console.log("attack right");
-                }
+                }   
         }//end of moue click down
         canvas.onmouseup = function(e){ //change image back to normal on mouse click up
             parentThis.playerImage.src = "assets/player_Sprites/playerChill-Left.png";

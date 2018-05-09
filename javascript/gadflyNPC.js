@@ -33,26 +33,42 @@ function socratesNPC(){
     this.x = 100;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/socrates.png";
-    this.speak = ["Welcome, help me gather the gadfly books the goblins have stolen."];
+    this.speak = ["Welcome, quick find a empty scroll and bring it to me. There should be a blank scroll located north from here.",
+                  "Thanks, help me gather the scrolls of gadfly, the goblins have stolen our gadfly history.",
+                  "Great work, only 2 more scrolls to collect.",
+                  "1 more scroll lad.",
+                  "Great work, you have collect all the scrolls of gadfly and saved the dungeon kids realm from goblins."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = socratesScroll;
     this.itemPickedUp = false;
     this.questCounter = 0;
+    this.endgame = false;
+    this.endgameCount =0;
 
     objectGrid[this.y/50][this.x/50] = this;
     
     this.update = function(){
         var parentThis = this;
+            // if the player E clicks the NPC
             if(player1.talk2NPC == true && playerInScopeOfGadfly(socrates) == true ){
                 player1.talk2NPC = false;
                 this.startedQuest = true;
-                if(parentThis.questCounter == 0){
-                    console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+
+                if(parentThis.endedQuest == false){
+                    missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                    nameGadfly.innerHTML = parentThis.name;
+                    imageGadfly.src = parentThis.npcImage.src;
                 }
 
-            }
+                var prepareGameOver = checkPlayerWin();
+                if (prepareGameOver == true){
+                    parentThis.endgame = true;
+                }
+                //check to see if player has scrolls collected
+
+
+            }// 
             if(this.startedQuest == true && this.book.itemPickedUp == false){
                 //draw quest item
                 objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
@@ -60,8 +76,16 @@ function socratesNPC(){
             }
             if(this.book.itemPickedUp == true){
                 objectGrid[this.book.y/50][this.book.x/50] = 0;
+                //parentThis.questCounter++;
             }
-        
+            if(parentThis.endgame == true){
+                parentThis.endgameCount++
+            }
+            if(parentThis.endgameCount > 50){
+                gameOver = true;
+            }
+
+            
         
         
     }
@@ -73,7 +97,8 @@ function obamaNPC(){
     this.x = 50;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/obama.png";
-    this.speak = ["Hello its me barock obama"];
+    this.speak = ["Change will not come if we wait for soem other person or some other time. We are the ones we've been waiting for. We are the change that we seek. Its been tough since the Goblins have invaded but I promise that, I myself, my daughters, Michelle, the dog, and Bow are all safe. If you could retrive my biography near the trees, that would be of big help.",
+                  "Thank you, the future rewards those who press on."  ];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = obamaBook;
@@ -86,9 +111,11 @@ function obamaNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(obama) == true /*&& player1.inventory.includes(socratesScroll)*/ ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -108,7 +135,8 @@ function trumpNPC(){
     this.x = 350;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/trump.png";
-    this.speak = ["I cant find my way off this bloody island, perhabs I need more money.", "Bring me 24 gold coins and I will give you a special key."];
+    this.speak = ["I cant find my way off this bloody island, perhabs I need more money. Bring me 24 gold coins and I will give you a special key.", 
+                  "The key is near socrates."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.key = trumpKey;
@@ -121,9 +149,10 @@ function trumpNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(trump)  ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[1]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(player1.talk2NPC == true && playerInScopeOfGadfly(trump) && this.startedQuest == true && this.key.itemPickedUp == false && player1.gold >= 24){
@@ -159,9 +188,10 @@ function cleaverNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(kathleenCleaver) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -181,7 +211,8 @@ function oprahNPC(){
     this.x = 2100;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/oprah.png";
-    this.speak = ["you get a book, you get a book, everyone gets books"];
+    this.speak = ["The thing you fear most has no power. Your fear of it is what has the power. Facing the truth really will set you free. Could you please retrive my book for me. It is located behind a locked door. If you can convince trump, prehaps he will give you a key.",
+                 "Great work!! Always remember that it doesn't matter where you come from. The ability to triumph begins with you -always."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = oprahBook;
@@ -194,9 +225,10 @@ function oprahNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(oprah) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -216,7 +248,8 @@ function redTailNPC(){
     this.x = 1950;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/redTail.png";
-    this.speak = ["Tuskegee Airmen"];
+    this.speak = ["The four elements: earth, air, water, and fire. Of these, I call your attention to two: air and fire. Though it is privilege to live in the air, you will die by fire. Give my regards to Der Fuhrer.",
+                  "We weren't assigned. We were requested. Straighten up...fly right."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = redTailBook;
@@ -229,9 +262,10 @@ function redTailNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(airmenRedTail) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -251,7 +285,8 @@ function hueyNewtonNPC(){
     this.x = 350;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/hueyNewton.png";
-    this.speak = ["i was a political activist"];
+    this.speak = ["The first book I ever really read was Plato's Republic, and then I had to go over that five times or something. I've dropped my book in the water. Im sure it has washed up near the shore.",
+                  "There's no reason for the establishment to fear me. But it has every right to fear the people collectively - I am on with the people."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = hueyNewtonBook;
@@ -265,9 +300,10 @@ function hueyNewtonNPC(){
         if(player1.talk2NPC == true && playerInScopeOfGadfly(hueyNewton) == true ){
             console.log("hellow to the test of heuy newtonw");
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -287,7 +323,8 @@ function tubmanNPC(){
     this.x = 1000;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/harrietTubman.png";
-    this.speak = ["Your a superstar"];
+    this.speak = ["I looked at my hands to see if i was the same person. There was such a glory over everything. The sun came up like gold through the tress, and i felt like I was in heaven. A good book to read would be nice right now. Too bad I dropped my favorite book in the Goblin's den.",
+                 "I was the conductor of the Underground Railroad for eight years, and I can say what most conductors can't say; I never ran my train off the track and I never lost a passenger."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = tubmanBook;
@@ -300,9 +337,10 @@ function tubmanNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(harrietTubman) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -335,9 +373,10 @@ function pasterNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(pastor) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -370,9 +409,10 @@ function andersonNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(marianAnderson) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -392,7 +432,8 @@ function garveyNPC(){
     this.x = 1850;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/marcusGarvey.png";
-    this.speak = ["Its me Marcus Garvey"];
+    this.speak = ["A people without the knowledge of their past history, origin and culture is like a tree without roots. Would you please retrieve my book from the other side of this brick wall?",
+                  "ethiopia shall once more arise from the ashes of material ruin to the heights of temporal glory."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = garveyBook;
@@ -405,9 +446,10 @@ function garveyNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(marcusGarvey) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){
@@ -423,11 +465,12 @@ function garveyNPC(){
 
 function rogersNPC(){
     this.name = "Joel Rogers"
-    this.y = 850;
-    this.x = 100;
+    this.y = 600;
+    this.x = 850;
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/joelRogers.png";
-    this.speak = ["Your a superstar"];
+    this.speak = ["The significance of African history is shown, though not overtly, in the very effort to deny anything worthy of the name of history to Africa and the African peoples. Retrieve my book and soak in the knowledge for oneself.",
+                  "History was then written or rewritten to show or imply that Europeans were the only creators of what could be called a civilization. In order to accomplish this, the Europeans had to forget, or pretend to forget, all they previously knew about Africa."];
     this.startedQuest = false;
     this.endedQuest = false;
     this.book = rogersBook;
@@ -440,9 +483,10 @@ function rogersNPC(){
         var parentThis = this;
         if(player1.talk2NPC == true && playerInScopeOfGadfly(joelRogers) == true ){
             this.startedQuest = true;
-            if(parentThis.questCounter == 0){
-                console.log(parentThis.speak[0]);
-                    player1.questList.push(parentThis);
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
             }
         }
         if(this.startedQuest == true && this.book.itemPickedUp == false){

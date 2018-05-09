@@ -3,20 +3,31 @@
     <head>
         <link rel="stylesheet" href="styles.css">
        <title><!-- Page Title --></title>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
+
+        <h1 id="clockdiv"> </h1>
+
         <main id="canvasMain" style="border:1px solid #000000;"></main>
-        
+
         <div id="playerBox" style="background-color:lightblue">
 
-            <h3 id="missionMessage"></h3>
-            <h3 id="nameGadfly"></h3>
-            <img id="imageGadfly" src="#">
-            <h1 id="playerScore"></h1>
-            <h1 id="playerHealth"></h1>
-            <h1 id="playerGold"></h1>
+                <h3 class="class1" id="nameGadfly"></h3>
+                <img id="imageGadfly" src="#">
+                <h3 class="class1" id="missionMessage"></h3>
+
             
         </div> 
+
+        <p id="gameOverText">GAME OVER</p>
+
+        <div id="div2">
+            <h1 class="class2" id="playerScore"></h1>
+            <h1 class="class2" id="playerHealth"></h1>
+            <h1 class="class2" id="playerGold"></h1>
+        </div>
+        
           
     </body>
     <script src="javascript/objectsGrid.js"></script>
@@ -28,7 +39,8 @@
     <script src="javascript/gadflyNPC.js"></script> 
     <script src="javascript/gadflyScroll.js"></script> 
     <script src="javascript/player.js"></script> 
-    <script src="javascript/maps.js"></script>  
+    <script src="javascript/maps.js"></script>>  
     <script src="javascript/game.js"></script>
     <script src="javascript/collisionMechanics.js"></script>
+    <script src="javascript/gameOver.js"></script>
 </html>
