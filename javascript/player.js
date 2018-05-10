@@ -1,11 +1,11 @@
 //playerComponnet
 function playerComponnet(){
-    this.gold = 100;
-    this.health = 200;
+    this.gold = 0;
+    this.health = 150;
     this.score = 0;
-    this.x = 600; //starting position;
+    this.x = 450; //starting position;
     this.spdX = 50; // player speed
-    this.y = 1200; // starting position
+    this.y = 750; // starting position
     this.spdY= 50;  // player speed
     this.playerImage = new Image(); //player img with src
     this.playerImage.src = "assets/player_Sprites/playerChill-Right.png";
@@ -33,7 +33,7 @@ function playerComponnet(){
             }       
             switch (e.keyCode) {
                 case 77: //debuging key M 
-                
+                console.log(player1.x + " " + player1.y);
                    
                 break;
                 case 65:

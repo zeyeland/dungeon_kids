@@ -10,6 +10,7 @@ var pastor = new pasterNPC();
 var marianAnderson = new andersonNPC();
 var marcusGarvey = new garveyNPC();
 var joelRogers = new rogersNPC();
+var statueThe = new statueNPC();
 
 
 
@@ -26,6 +27,7 @@ gadflyNPCList.push(pastor);
 gadflyNPCList.push(marianAnderson);
 gadflyNPCList.push(marcusGarvey);
 gadflyNPCList.push(joelRogers);
+gadflyNPCList.push(statueThe);
 
 function socratesNPC(){
     this.name = "Socrates"
@@ -74,10 +76,10 @@ function socratesNPC(){
                 objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
                 
             }
-            if(this.book.itemPickedUp == true){
-                objectGrid[this.book.y/50][this.book.x/50] = 0;
+            //if(this.book.itemPickedUp == true){
+            //    objectGrid[this.book.y/50][this.book.x/50] = 0;
                 //parentThis.questCounter++;
-            }
+            //}
             if(parentThis.endgame == true){
                 parentThis.endgameCount++
             }
@@ -123,9 +125,7 @@ function obamaNPC(){
             objectGrid[parentThis.book.y/50][parentThis.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }
 }
 
@@ -136,12 +136,14 @@ function trumpNPC(){
     this.npcImage = new Image()
     this.npcImage.src = "assets/gadfly_sprites/trump.png";
     this.speak = ["I cant find my way off this bloody island, perhabs I need more money. Bring me 24 gold coins and I will give you a special key.", 
-                  "The key is near socrates."];
+                  "The key is near socrates.",
+                  " "];
     this.startedQuest = false;
     this.endedQuest = false;
     this.key = trumpKey;
     this.itemPickedUp = false;
     this.questCounter = 0;
+    this.part1 = true;
 
     objectGrid[this.y/50][this.x/50] = this;
 
@@ -155,16 +157,16 @@ function trumpNPC(){
                 imageGadfly.src = parentThis.npcImage.src;
             }
         }
-        if(player1.talk2NPC == true && playerInScopeOfGadfly(trump) && this.startedQuest == true && this.key.itemPickedUp == false && player1.gold >= 24){
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(trump) && this.part1 ==true  && this.key.itemPickedUp == false && player1.gold >= 24){
             //draw quest item
+            this.part1 = false;
             keyList.push(this.key);
             objectGrid[this.key.y/50][this.key.x/50] = parentThis.key;
             player1.gold -= 24;
+            parentThis.questCounter ++; 
            
         }
-        if(this.key.itemPickedUp == true){
-            objectGrid[this.key.y/50][this.key.x/50] = 0;
-        }
+        
     }
 }
 
@@ -199,9 +201,7 @@ function cleaverNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }
 }
 
@@ -236,9 +236,7 @@ function oprahNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }  
 }
 
@@ -273,9 +271,7 @@ function redTailNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }  
 }
 
@@ -311,9 +307,7 @@ function hueyNewtonNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+       
     }  
 }
 
@@ -348,9 +342,7 @@ function tubmanNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+    
     }
 }
 
@@ -384,9 +376,7 @@ function pasterNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }
 }
 
@@ -420,9 +410,7 @@ function andersonNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }
 }
 
@@ -457,9 +445,7 @@ function garveyNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }
 }
 
@@ -494,9 +480,7 @@ function rogersNPC(){
             objectGrid[this.book.y/50][this.book.x/50] = parentThis.book;
             
         }
-        if(this.book.itemPickedUp == true){
-            objectGrid[this.book.y/50][this.book.x/50] = 0;
-        }
+        
     }
 }
 
@@ -518,3 +502,47 @@ function playerInScopeOfGadfly(NpcObject){
 
 }
 
+
+function statueNPC(){
+    this.name = "Higher One"
+    this.x = 3750;
+    this.y = 1200;
+    this.npcImage = new Image()
+    this.npcImage.src = "assets/game_objects/altar.png";
+    this.speak = ["Prayer is Power"];
+    this.startedQuest = false;
+    this.endedQuest = false;
+    
+   // this.itemPickedUp = false;
+    this.questCounter = 0;
+    
+
+    objectGrid[this.y/50][this.x/50] = this;
+
+    this.update = function(){
+        var parentThis = this;
+        if(player1.talk2NPC == true && playerInScopeOfGadfly(statueThe) == true ){
+            this.startedQuest = true;
+            if(parentThis.endedQuest == false){
+                missionMessage.innerHTML = parentThis.speak[parentThis.questCounter];
+                nameGadfly.innerHTML = parentThis.name;
+                imageGadfly.src = parentThis.npcImage.src;
+
+                 goblin22.health = 0;
+                 goblin23.health = 0;
+                 goblin24.health = 0;
+                 goblin25.health = 0;
+                 goblin26.health = 0;
+                 goblin27.health = 0; 
+                 goblin28.health = 0;
+                 goblin29.health = 0;
+                 goblin30.health = 0;
+                 goblin31.health = 0;
+                 goblin32.health = 0;
+                 goblin33.health = 0;
+                 goblin34.health = 0;
+            }
+        }
+        
+    }
+}

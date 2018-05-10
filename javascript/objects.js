@@ -1,16 +1,32 @@
 var entranceDoor1 = new entranceDoor(3850,950,);
 var entranceDoor2 = new entranceDoor(3550,500);
 var entranceDoor3 = new entranceDoor(3700,500);
+var entranceDoor4 = new entranceDoor(3900,1150);
+var entranceDoor5 = new entranceDoor02(3200,1400);
+var entranceDoor6 = new entranceDoor02(3050,1400);
+var entranceDoor7 = new entranceDoor02(3700,1300);
 var entranceDoorList = [];
 entranceDoorList.push(entranceDoor1);
 entranceDoorList.push(entranceDoor2);
 entranceDoorList.push(entranceDoor3);
+entranceDoorList.push(entranceDoor4);
+entranceDoorList.push(entranceDoor5);
+entranceDoorList.push(entranceDoor6);
+entranceDoorList.push(entranceDoor7);
 
 function entranceDoor(x,y){
     this.x = x;
     this.y = y;
     this.doorImage = new Image(); //player img with src
     this.doorImage.src = "assets/setting_objects/entrance.png";
+    objectGrid[this.y/50][this.x/50] = this;
+}
+
+function entranceDoor02(x,y){
+    this.x = x;
+    this.y = y;
+    this.doorImage = new Image(); //player img with src
+    this.doorImage.src = "assets/setting_objects/bazaar_gone.png";
     objectGrid[this.y/50][this.x/50] = this;
 }
 
@@ -25,12 +41,36 @@ var tree6 = new trees(2950,1550);
 var tree7 = new trees(1150,1200);
 var tree8 = new trees(1150,1000);
 var tree9 = new trees(3550,1200);
-var tree10 = new trees(3750,1250);
+var tree10 = new trees(3700,1200);
 var tree11 = new trees(3300,1550);
 var tree12 = new trees(3900,1650);
 var tree13 = new trees(3350,1800);
 var tree14 = new trees(2150,1350);
 var tree15 = new trees(500,1000);
+//
+var tree16 = new trees(3700,1350);
+var tree17 = new trees(3750,1350);
+var tree18 = new trees(3800,1350);
+//
+var tree19 = new trees(3800,1600);
+var tree20 = new trees(3850,1600);
+var tree21 = new trees(3800,1650);
+var tree22 = new trees(3900,1550);
+//
+var tree23 = new trees(3700,1500);
+var tree24 = new trees(3350,1550);
+var tree25 = new trees(3400,1550);
+var tree26 = new trees(3450,1550);
+
+var tree27 = new trees(3400,1500);
+var tree28 = new trees(3450,1500);
+var tree29 = new trees(3500,1500);
+var tree30 = new trees(3600,1500);
+var tree31 = new trees(3750,1500);
+var tree32 = new trees(3800,1500);
+var tree33 = new trees(3850,1500);
+var tree34 = new trees(3900,1500);
+var tree35 = new trees(3300,1500);
 
 var treeList = [];
 treeList.push(tree1);
@@ -48,6 +88,26 @@ treeList.push(tree12);
 treeList.push(tree13);
 treeList.push(tree14);
 treeList.push(tree15);
+treeList.push(tree16);
+treeList.push(tree17);
+treeList.push(tree18);
+treeList.push(tree19);
+treeList.push(tree20);
+treeList.push(tree21);
+treeList.push(tree22);
+treeList.push(tree23);
+treeList.push(tree24);
+treeList.push(tree25);
+treeList.push(tree26);
+treeList.push(tree27);
+treeList.push(tree28);
+treeList.push(tree29);
+treeList.push(tree30);
+treeList.push(tree31);
+treeList.push(tree32);
+treeList.push(tree33);
+treeList.push(tree34);
+treeList.push(tree35);
 
 function trees(x,y){
     this.health = 100;
@@ -66,8 +126,10 @@ function trees(x,y){
 
 const key1 = new keys("Key 1",300,50,"Lock 1");
 const trumpKey = new keys("Trump's Key",450,750,"Trump");
+const key2 = new keys("Key 2",3850,1650,"Church");
 var keyList = [];
 keyList.push(key1);
+keyList.push(key2);
 
 function keys(name,x,y, keyOnwer){
     this.name = name;
@@ -105,9 +167,11 @@ function keys(name,x,y, keyOnwer){
 
 var trumpKeyDoor = new keyDoors(200,1200,trumpKey);
 var keyDoor1 = new keyDoors(50,950, key1);
+var keyDoor2 = new keyDoors(3150,1700, key2);
 var keyDoorList = [];
 keyDoorList.push(trumpKeyDoor);
 keyDoorList.push(keyDoor1);
+keyDoorList.push(keyDoor2);
 
 function keyDoors(x,y,key){
     this.x = x;

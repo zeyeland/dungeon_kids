@@ -25,7 +25,22 @@ var goblin18 = new smallGoblinComponnet("Goblin18",3600,600,"assets/enemy_sprite
 var goblin19 = new smallGoblinComponnet("Goblin19",3900,900,"assets/enemy_sprites/hobgoblin_old.png");
 var goblin20 = new smallGoblinComponnet("Goblin20",3900,750,"assets/enemy_sprites/hobgoblin_new.png");
 var goblin21 = new smallGoblinComponnet("Goblin21",3900,600,"assets/enemy_sprites/hobgoblin_new.png");
+/////////////////below goblins die from status NPC event
+var goblin22 = new smallGoblinComponnet("Goblin22",3850,1300,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin23 = new smallGoblinComponnet("Goblin23",3900,1300,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin24 = new smallGoblinComponnet("Goblin24",3850,1350,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin25 = new smallGoblinComponnet("Goblin25",3900,1350,"assets/enemy_sprites/hobgoblin_new.png");
 
+var goblin26 = new smallGoblinComponnet("Goblin26",3800,1550,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin27 = new smallGoblinComponnet("Goblin27",3850,1550,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin28 = new smallGoblinComponnet("Goblin28",3750,1650,"assets/enemy_sprites/hobgoblin_new.png");
+
+var goblin29 = new smallGoblinComponnet("Goblin29",3750,1600,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin30 = new smallGoblinComponnet("Goblin30",3750,1550,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin31 = new smallGoblinComponnet("Goblin31",3550,1650,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin32 = new smallGoblinComponnet("Goblin32",3550,1600,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin33 = new smallGoblinComponnet("Goblin33",3500,1600,"assets/enemy_sprites/hobgoblin_new.png");
+var goblin34 = new smallGoblinComponnet("Goblin34",3500,1650,"assets/enemy_sprites/hobgoblin_new.png");
 
 
 var goblinNPCList = [];
@@ -50,6 +65,20 @@ goblinNPCList.push(goblin18);
 goblinNPCList.push(goblin19);
 goblinNPCList.push(goblin20);
 goblinNPCList.push(goblin21);
+goblinNPCList.push(goblin22);
+goblinNPCList.push(goblin23);
+goblinNPCList.push(goblin24);
+goblinNPCList.push(goblin25);
+goblinNPCList.push(goblin26);
+goblinNPCList.push(goblin27);
+goblinNPCList.push(goblin28);
+goblinNPCList.push(goblin29);
+goblinNPCList.push(goblin30);
+goblinNPCList.push(goblin31);
+goblinNPCList.push(goblin32);
+goblinNPCList.push(goblin33);
+goblinNPCList.push(goblin34);
+
 
 
 function smallGoblinComponnet(name,x,y,imageSRC,){

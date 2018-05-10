@@ -195,9 +195,10 @@ var waterTimer = 0; //this function is not a true collision so it shouldnt be ch
 function checkWaterCollisions(focusObject){
   
   waterTimer++;
-  //console.log("testing water function");
-  if(mapGrid[focusObject.y/50][focusObject.x/50] == 5 && focusObject.moveWithGrate == false){
-    focusObject.health -= 3;
+  
+  if(mapGrid[focusObject.y/50][focusObject.x/50] == 5 && focusObject.moveWithGrate == false ){
+    console.log("testing water function");
+    focusObject.health -= 1;
     waterTimer = 0;
     //return false;
   }

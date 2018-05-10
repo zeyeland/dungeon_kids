@@ -38,6 +38,7 @@ img {
     height: 500px;
     box-sizing: border-box;
     overflow: hidden;
+    clear: right;
 }
 
 #gameOverText{

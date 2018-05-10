@@ -50,6 +50,7 @@ function bookObj(bookName, bookOwner, booky, bookx, bookSrc, notes){
         parentThis = this;
         if(player1.x == this.x && player1.y == this.y && this.itemPickedUp == false){
             this.itemPickedUp = true;
+            objectGrid[parentThis.y/50][parentThis.x/50] = 0;
             player1.inventoryBooks.push(this);
             console.log(this.name + " added to player innetory");
             var theBookOwner = getBookOwner(this.bookOwner);
@@ -77,6 +78,7 @@ function bookObjScroll(bookName, bookOwner, booky, bookx, bookSrc, notes){
         var parentThis = this;
         if(player1.x == this.x && player1.y == this.y && this.itemPickedUp == false){
             this.itemPickedUp = true;
+            objectGrid[parentThis.y/50][parentThis.x/50] = 0;
             player1.inventoryBooks.push(this);
             console.log(this.name + " added to player innetory");
             var theBookOwner = getBookOwner(this.bookOwner);
@@ -99,7 +101,10 @@ function bookObjScroll(bookName, bookOwner, booky, bookx, bookSrc, notes){
 }
 ////f
 function drawBook(objectFocus,whitespaceX,whitespaceY){
-    ctx.drawImage(objectFocus.bookImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
+    if(objectFocus != 0 && objectFocus != null){
+        ctx.drawImage(objectFocus.bookImage,whitespaceX*(canvas.width/20),whitespaceY*(canvas.height/10),canvas.width/20,canvas.height/10);
+    }
+    
 }
 
 function getBookOwner(ownerOfBook){
